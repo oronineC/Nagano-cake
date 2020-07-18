@@ -16,3 +16,31 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+header {
+	height: 100px;
+}
+
+li {
+	margin-right: 10px;
+}
+
+.navbar-inverse {
+	background: linear-gradient(to right, #77FF77, #eeFFee);
+	border-color: #fff;
+}
+
+.navbar-nav {
+	 margin: 20px 20px;
+}
+
+body {
+	margin-top: 150px;
+}
+
+.genre_search {
+	border: solid 2px #000;
+	padding: 10px;
+}
+

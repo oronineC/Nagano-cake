@@ -8,25 +8,33 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
- <!--  仮作成 -->
-    <header>
+
+  <header class="navbar clearfix navbar-fixed-top navbar-inverse">
+    <div class="container">
       <nav>
-        <ul>
-          <% if customer_signed_in? %>
-            <li>ユーザー</li>
-            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
-          <% elsif admin_signed_in? %>
-            <li>管理者</li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-          <% else %>
-            <li>ゲストユーザー</li>
-            <li><%= link_to "新規登録", new_customer_registration_path %></li>
-            <li><%= link_to "ログイン", new_customer_session_path %></li>
-          <% end %>
+        <ul class="nav navbar-nav navbar-left">
+          <%= link_to image_tag('/images/logo.png'), root_path %>
         </ul>
       </nav>
-    </header>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'about', home_about_path, class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to '商品一覧', "#", class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to '新規登録', new_customer_registration_path, class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to 'ログイン', new_customer_session_path, class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to '管理者の方はこちら', "#", class: 'btn btn-default paper paper-curl-right' %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
+
+
 </html>
