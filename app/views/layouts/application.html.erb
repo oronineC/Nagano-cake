@@ -9,7 +9,32 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header class="navbar clearfix navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav navbar-nav navbar-left">
+          <%= link_to image_tag('/images/logo.png'), root_path %>
+        </ul>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'about', home_about_path, class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to '商品一覧', "#", class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to '新規登録', new_customer_registration_path, class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to 'ログイン', new_customer_session_path, class: 'btn btn-default paper paper-curl-right' %></li>
+            <li><%= link_to '管理者の方はこちら', "#", class: 'btn btn-default paper paper-curl-right' %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
+
+
 </html>
