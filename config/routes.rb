@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :customers do
+     get 'customers/confirm'
+     resources :customers, only: [:new, :show, :edit, :update, :confirm] 
+  end
+  
   devise_for :customers
 
   devise_for :admin, skip: :all
