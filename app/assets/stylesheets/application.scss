@@ -31,12 +31,17 @@ li {
 	 margin: 20px 20px;
 }
 
-body {
-	margin-top: 150px;
-}
-
 .genre_search {
 	border: solid 2px #000;
 	padding: 10px;
+}
+
+.about {
+	text-align: center;
+	margin: 0 auto;
+}
+
+body > .container {
+	margin-top: 50px;
 }
 
