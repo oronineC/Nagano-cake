@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	  when Admin
 	    admin_customers_path
 	  when Customer
-	    customer_path(resource)
+	    root_path(resource)
 	  end
 	end
 
