@@ -1,0 +1,62 @@
+<h2>新規会員登録</h2>
+
+<div class="container">
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+    <%= f.label :lastNameKanji, "（姓）" %>
+    <%= f.text_field :lastNameKanji, autofocus: true, autocomplete: "（姓）" %>
+    <%= f.label :first_name_kanji, "（名）" %>
+    <%= f.text_field :first_name_kanji, autofocus: true, autocomplete: "（名）" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name_kana, "（セイ）" %>
+    <%= f.text_field :last_name_kana, autocomplete: "（セイ）" %>
+    <%= f.label :first_name_kana, "（メイ）" %>
+    <%= f.text_field :first_name_kana, autocomplete: "（メイ）" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autocomplete: "メールアドレス" %>
+  </div>
+
+
+　<div class="form-group">
+    <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
+    <%= f.text_field :postcode, autocomplete: "郵便番号（ハイフンなし）" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :street_address, "住所" %>
+    <%= f.text_field :street_address, autocomplete: "住所" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
+    <%= f.text_field :phone_number, autocomplete: "電話番号（ハイフンなし）" %>
+  </div>
+
+　<div class="form-group">
+    <%= f.label :enctyped_password, "パスワード" %>
+    <%= f.password_field :enctypedpassword, autocomplete: "パスワード" %>
+  </div>
+
+　<div class="form-group">
+    <%= f.label :enctyped_password, "パスワード（確認用）" %>
+    <%= f.password_field :enctyped_password, autocomplete: "パスワード（確認用）" %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit "新規登録", class: "btn btn-success" %>
+  </div>
+  <h2>既に登録済みの方</h2>
+<h4>こちらからログインしてください。</h4>
+<% end %>
