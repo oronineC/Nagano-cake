@@ -1,0 +1,16 @@
+<h1>Customers::Customers#edit</h1>
+<p>Find me in app/views/customers/customers/edit.html.erb</p>
+
+<h2>登録情報編集</h2>
+<!-- form_for部分 -->
+<%= form_for(@customer, url: '/customers/edit') do |f| %>
+<li>名前</li>　<li>（姓）</li>　<%= f.text_field :last_name %>　<li>（名）</li>　<%= f.text_field :first_name %>
+<li>フリガナ</li>　<li>（セイ）</li>　<%= f.text_field :last_name %>　<li>（メイ）</li>　<%= f.text_field :first_name %>
+<li>メールアドレス</li>　<%= f.text_field :email %>
+<li>郵便番号（ハイフンなし）</li>　<%= f.text_field :postcode %>
+<li>住所</li>　<%= f.text_field :street_address %>
+<li>電話番号（ハイフンなし）</li>　<%= f.text_field :phone_number %>
+<!--<%= f.submit '編集内容を保存する' %>　
+<% end %>
+<%= link_to '退会する',  /customers/customers/confirm, class: "btn-danger" %>　
+<% end %>
