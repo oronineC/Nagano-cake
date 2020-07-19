@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
 	  case resource
 	  when Admin
-	    admin_customers_path
+	    admin_homes_top_path
 	  when Customer
+
 	    root_path(resource)
 	  end
 	end
@@ -22,7 +23,9 @@ class ApplicationController < ActionController::Base
 
 
 
+	protected
 	def configure_permitted_parameters
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+	    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastNameKanji, :first_name_kanji, :last_name_kana, :first_name_kana, :postcode, :street_address, :phone_number, :email, :password, :password_confirmation ])
+	    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
 	end
 end
