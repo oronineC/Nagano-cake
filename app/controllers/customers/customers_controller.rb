@@ -1,14 +1,24 @@
 class Customers::CustomersController < ApplicationController
-before_action :ensure_correct_user, only: [:edit, :update]
+  
+before_action :ensure_correct_customer, only: [:edit, :update]
+ 
+  def new
+    # @custemers = Customer.new
+  end
+
 
   def show
     @customer = Customer.find(params[:id])
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update
+     @customer = Customer.find(params[:id])
+    @custemer.update
+    redirect_to customers_customer_path
   end
 
   def confirm
