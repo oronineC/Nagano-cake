@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	  when Admin
 	    admin_homes_top_path
 	  when Customer
-	    customers_customer_path
+	    root_path
 	  end
 	end
 
@@ -22,7 +22,9 @@ class ApplicationController < ActionController::Base
 
 
 
+	protected
 	def configure_permitted_parameters
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+	    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastNameKanji, :first_name_kanji, :last_name_kana, :first_name_kana, :postcode, :street_address, :phone_number, :email, :password, :password_confirmation ])
+	    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
 	end
 end
