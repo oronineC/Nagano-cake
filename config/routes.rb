@@ -2,7 +2,17 @@ Rails.application.routes.draw do
   namespace :customers do
      get 'customers/confirm'
      resources :customers, only: [:new, :show, :edit, :update, :confirm]
+
   end
+  
+  root 'home#index'
+
+  resources :items
+  resources :carts, only: [:index]
+  get '/carts' => 'customers/carts#index'
+  post '/carts' => 'customers/carts#create'
+  delete '/carts' => 'customers/carts#destroy'
+
 
   devise_for :customers
 
@@ -23,5 +33,6 @@ Rails.application.routes.draw do
 
   root to: 'home#top'
   get 'home/about' => 'home#about'
+
 
 end
