@@ -1,4 +1,5 @@
 class Customers::CustomersController < ApplicationController
+before_action :authenticate_customer!
 before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
