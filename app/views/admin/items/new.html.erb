@@ -20,7 +20,8 @@
 
     <div class="field">
       <h4>販売ステータス</h4>
-      <%= f.select :is_sales_active, Item.is_sales_actives_i18n.keys.map{|k| [I18n.t("enum.item.is_sales_active.#{k}"), k]} %>
+      <%= f.select :is_sales_active, Item.is_sales_actives.keys.map{|k| [I18n.t("enums.item.is_sales_active.#{k}"), k]} %>
+
     </div>
 
 

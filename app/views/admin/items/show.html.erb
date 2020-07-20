@@ -1,5 +1,5 @@
 <h2>商品詳細</h2>
-   <%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+   <%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
     <p>商品名</p>
 	<p><%= @item.name %></p></br>
 	<p>商品説明</p>
@@ -9,4 +9,4 @@
 	<p>ジャンル</p>
 	<p>ケーキ</p></br>
 	<p>ステータス</p>
-	<p><%= @item.is_sales_active%></p></br>
+	<p><%= @item.is_sales_active_i18n %></p></br>

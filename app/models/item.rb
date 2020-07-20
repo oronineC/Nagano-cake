@@ -2,8 +2,7 @@ class Item < ApplicationRecord
 	attachment :image
 
 	enum is_sales_active:{
-		default: 1,
-		on_sale: 2,
-		sold_out: 3,
+		 on_sale: 1,
+		 sold_out: 2,
 	}
 end

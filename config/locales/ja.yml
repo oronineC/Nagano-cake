@@ -1,7 +1,7 @@
 ja:
-  enum:
-    item:
-      is_sales_active:
-        default: "-選択してください-"
-        on_sale: "販売中"
-        sold_out: "売切れ"
+  enums:
+      item:
+        is_sales_active:
+          on_sale:  販売中
+          sold_out: 売切れ
+
