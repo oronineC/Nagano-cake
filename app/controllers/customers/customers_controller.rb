@@ -1,10 +1,7 @@
 class Customers::CustomersController < ApplicationController
-  
+
+before_action :authenticate_customer!
 before_action :ensure_correct_customer, only: [:edit, :update]
- 
-  def new
-    # @custemers = Customer.new
-  end
 
 
   def show
@@ -30,17 +27,16 @@ before_action :ensure_correct_customer, only: [:edit, :update]
     reset_session
      redirect_to root_path
   end
-  
+
   private
-  
+
   def ensure_correct_customer
   @customer = Customer.find(params[:id])
     unless @customer == current_customer
   # redirect_to (current_customer)
     end
   end
- 
-  
+
     def customer_params
     params.require(:custemer).permit(:last_name_kanji, :first_name_kanji, :last_name_kana, :first_name_kana, :email, :postcode, :street_address, :phone_number)
     end
