@@ -7,7 +7,7 @@ class AddLastNameKanjiToCustomers < ActiveRecord::Migration[5.2]
     add_column :customers, :postcode, :string
     add_column :customers, :street_address, :string
     add_column :customers, :phone_number, :string
-    add_column :customers, :is_customer_active , :boolean
+    add_column :customers, :is_customer_active , :boolean, default: false, null: false
   end
 
 end

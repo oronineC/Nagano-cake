@@ -13,6 +13,17 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
 
 header {
 	height: 100px;
