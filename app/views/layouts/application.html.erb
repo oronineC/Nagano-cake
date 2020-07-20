@@ -20,21 +20,21 @@
         <ul class="nav justify-content-end">
             <!-- 顧客ログイン時 -->
           <% if customer_signed_in? %>
-            <li><%= link_to 'マイページ', "#", class: 'btn btn-outline-dark' %></li>
-            <li><%= link_to '商品一覧', "#", class: 'btn btn-outline-dark' %></li>
+            <li><%= link_to 'マイページ', customers_customer_path(current_customer.id), class: 'btn btn-outline-dark' %></li>
+            <li><%= link_to '商品一覧', customers_items_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to 'カート', "#", class: 'btn btn-outline-dark' %></li>
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-dark' %></li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
-            <li><%= link_to '商品一覧', "#", class: 'btn btn-outline-dark' %></li>
+            <li><%= link_to '商品一覧', customers_items_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '会員一覧', "#", class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '注文履歴一覧', "#", class: 'btn btn-outline-dark' %></li>
-            <li><%= link_to 'ジャンル管理', "#", class: 'btn btn-outline-dark' %></li>
+            <li><%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %></li>
             <!-- ログアウト時またはログインしていない時 -->
           <% else %>
             <li><%= link_to 'about', home_about_path, class: 'btn btn-outline-dark' %></li>
-            <li><%= link_to '商品一覧', "#", class: 'btn btn-outline-dark' %></li>
+            <li><%= link_to '商品一覧', customers_items_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '新規登録', new_customer_registration_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to 'ログイン', new_customer_session_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '管理者の方はこちら', new_admin_session_path, class: 'btn btn-outline-dark' %></li>
