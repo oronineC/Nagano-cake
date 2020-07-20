@@ -5,7 +5,7 @@
 
 	<div class="field">
       <h4>商品名</h4>
-      <%= f.text_field :name class: "col-xs-12 item_name" %>
+      <%= f.text_field :name, class: "col-xs-12 item_name" %>
     </div>
 
 	<div class="field">
@@ -20,8 +20,7 @@
 
     <div class="field">
       <h4>販売ステータス</h4>
-      <%= f.select :budget_d, Item.budget_ds_i18n.keys.map{|k| [I18n.t("enum.restaurant.budget_d.#{k}"), k]}
- %>
+      <%= f.select :is_sales_active, Item.is_sales_actives_i18n.keys.map{|k| [I18n.t("enum.item.is_sales_active.#{k}"), k]} %>
     </div>
 
 
