@@ -1,10 +1,12 @@
 class Customers::CustomersController < ApplicationController
 
-before_action :ensure_correct_customer, only: [:edit, :update]
-
   def new
     # @custemers = Customer.new
   end
+
+before_action :authenticate_customer!
+before_action :ensure_correct_customer, only: [:edit, :update]
+
 
 
   def show
@@ -16,15 +18,22 @@ before_action :ensure_correct_customer, only: [:edit, :update]
   end
 
   def update
-     @customer = Customer.find(params[:id])
-    @custemer.update
-    redirect_to customers_customer_path
+    @customer = Customer.find(params[:id])
+    @custemer.update(customer_params)
+    redirect_to customers_customer_path(@customer.id)
   end
 
   def confirm
   end
 
-  def destroy
+
+
+
+  def hide
+    @customer =Customer.find(params[:id])
+    @customer.update(is_customer_active: true)
+    reset_session
+     redirect_to root_path
   end
 
   private
@@ -32,7 +41,7 @@ before_action :ensure_correct_customer, only: [:edit, :update]
   def ensure_correct_customer
   @customer = Customer.find(params[:id])
     unless @customer == current_customer
-   redirect_to(current_customer)
+  # redirect_to (current_customer)
     end
   end
 
