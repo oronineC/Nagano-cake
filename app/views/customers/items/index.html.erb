@@ -1,4 +1,4 @@
-<div class="col-3">
+<div class="row">
 <!-- ジャンル検索サイドバー  -->
 <div class="genre_search">
   <h4>ジャンル検索</h4>
@@ -6,8 +6,25 @@
   <p><%=link_to 'プリン', '#' %></p>
   <p><%=link_to 'キャンディ', '#' %></p>
   <p><%=link_to '焼き菓子', '#' %></p>
+ </div>
 </div>
 
-<div class="col-9">
+<div class="row">
+    <!-- 商品一覧を表示 -->
+    <h2><%= @info %>一覧(全件)</h2>
+
+    <div class="main clearfix">
+  		<% @items.each do |item| %>
+  		    <div class = "AA">
+        		<div class = "imagWrap-f">
+          			<%= link_to customers_item_path(item) do %>
+            			<%= attachment_image_tag item, :image, :fill, 60, 60, fallback: "", size:'150x100' %>
+          			<% end %>
+        		</div>
+      			<p><%= link_to item.name, customers_item_path(item) %></p>
+      			<p></p>
+      		</div>
+  		<% end %>
+	</div>
 
 </div>
