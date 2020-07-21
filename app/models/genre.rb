@@ -1,6 +1,6 @@
 class Genre < ApplicationRecord
 
-	has_many :items, dependent: :destroy
+    has_many :items, dependent: :destroy
 
 	enum is_active_status: {
         無効: 0,

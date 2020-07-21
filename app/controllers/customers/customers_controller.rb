@@ -1,7 +1,12 @@
 class Customers::CustomersController < ApplicationController
 
+  def new
+    # @custemers = Customer.new
+  end
+
 before_action :authenticate_customer!
 before_action :ensure_correct_customer, only: [:edit, :update]
+
 
 
   def show
@@ -21,7 +26,10 @@ before_action :ensure_correct_customer, only: [:edit, :update]
   def confirm
      @customer =Customer.find(params[:id])
   end
-  
+
+
+
+
   def hide
     @customer =Customer.find(params[:id])
     @customer.update(is_customer_active: true)
