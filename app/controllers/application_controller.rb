@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = @cart.id
     end
   end
-end
+
   protected
 
 	#仮設定
@@ -21,7 +21,6 @@ end
 	  when Admin
 	    admin_top_path
 	  when Customer
-
 	    root_path(resource)
 	  end
 	end

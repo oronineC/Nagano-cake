@@ -1,21 +1,18 @@
-<div class="col-3">
-  <div class="genre_search">
-  <h4>ジャンル検索</h4>
-  <p><%=link_to 'ケーキ', '#' %></p>
-  <p><%=link_to 'プリン', '#' %></p>
-  <p><%=link_to 'キャンディ', '#' %></p>
-  <p><%=link_to '焼き菓子', '#' %></p>
- </div>
+<div class="col-md-3">
+<!-- ジャンル検索サイドバー  -->
+<%= render "search", genres: @genres %>
 
 </div>
 
-<div class="col-9">
-  <div class="item-image">
-    <%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "", size:'300x200' %>
-  </div>
-  <h2><%= @item.name %></h2>
-  <%= @item.explanation %>
-  <h4>￥<%= addTax(@item.price,1.1) %>(税込)</h4>
-  </div>
+<div class="col-4">
+  	<div class="item-image">
+    	<%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "", size:'300x200' %>
+  	</div>
 </div>
+<div class="col-4">
+ 	<h2><%= @item.name %></h2>
+  	<%= @item.explanation %>
+  	<h4>￥<%= addTax(@item.price,1.1) %>(税込)</h4>
+</div>
+
 
