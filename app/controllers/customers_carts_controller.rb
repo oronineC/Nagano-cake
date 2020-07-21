@@ -1,0 +1,2 @@
+class CustomersCartsController < ApplicationController
+end
