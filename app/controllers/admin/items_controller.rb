@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 	before_action :authenticate_admin!
   def index
-    @items = Item.page(params[:page]).reverse_order
+    @items = Item.page(params[:page]).per(5)
   end
 
   def show
