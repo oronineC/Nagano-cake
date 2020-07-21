@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-
+    has_many :carts
 	attachment :image
 
 	enum is_sales_active:{

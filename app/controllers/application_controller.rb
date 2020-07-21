@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 end
   protected
 
-	#仮設定
 	def after_sign_in_path_for(resource)
 	  case resource
 	  when Admin

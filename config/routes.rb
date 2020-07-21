@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :items, only: [:index, :show]
   
-  resources :carts, only: [:index,create,update,destroy]
+  resources :carts, only: [:index, :create, :update, :destroy]
   
-  delete '/carts' => 'customers/carts#destroy'
+  delete '/carts' => 'customers/carts#destroy_all'
 
 
   devise_for :customers
