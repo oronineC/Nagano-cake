@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
 	attachment :image
 
 	enum is_sales_active:{
