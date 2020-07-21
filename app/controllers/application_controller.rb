@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-	#仮設定
 	def after_sign_in_path_for(resource)
 	  case resource
 	  when Admin
@@ -25,8 +24,6 @@ class ApplicationController < ActionController::Base
 	  end
 	end
 
-
-  
 	def after_sign_out_path_for(resource)
 	    new_session_path(resource)
 	end
