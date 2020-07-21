@@ -1,0 +1,40 @@
+<div class="col-md-3">
+<!-- ジャンル検索サイドバー  -->
+<%= render "search", genres: @genres %>
+
+</div>
+
+<div class="col-md-8 offset-md-1">
+<!-- トップビジュアル -->
+  <div class="main-visual">
+    <div class="main-visual-text">
+      <p>
+        ようこそ、NaganoCakeへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+
+  <!-- 商品ID上から4件をオススメとして表示させる予定 -->
+  <h3>オススメ商品</h3>
+  <div class="item-picup">
+    <% @items.each do |item| %>
+      <div class = "item-box">
+        <span class = "image-box">
+          <%= link_to customers_item_path(item) do %>
+            <%= attachment_image_tag(item, :image, :fill, 60, 60, fallback: "no_image.jpg", size:'150x100') %>
+          <% end %>
+        </span>
+        <p><%= item.name %></p>
+        <p>¥<%= addTax(item.price,1.1) %>（税込）</p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="see-more" style="float: right;">
+    <%= link_to "もっと見る>", customers_items_path %>
+  </div>
+
+</div>

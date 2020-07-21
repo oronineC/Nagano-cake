@@ -1,2 +1,18 @@
-<h1>Customers::Items#show</h1>
-<p>Find me in app/views/customers/items/show.html.erb</p>
+<div class="col-md-3">
+<!-- ジャンル検索サイドバー  -->
+<%= render "search", genres: @genres %>
+
+</div>
+
+<div class="col-4">
+  	<div class="item-image">
+    	<%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "", size:'300x200' %>
+  	</div>
+</div>
+<div class="col-4">
+ 	<h2><%= @item.name %></h2>
+  	<%= @item.explanation %>
+  	<h4>￥<%= addTax(@item.price,1.1) %>(税込)</h4>
+</div>
+
+
