@@ -24,12 +24,8 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-      if@item.update(item_params)
-      redirect_to item_path(@item), notice: "商品を編集しました。"
-    else
-      @items = Item.all
-      render 'admin/items/edit'
-    end
+    @item.update(item_params)
+    redirect_to admin_items_path(@item), notice: "商品を編集しました。"
   end
 
   def destroy
@@ -42,6 +38,6 @@ class Admin::ItemsController < ApplicationController
 private
 
   def item_params
-    params.require(:item).permit(:name, :explanation, :price, :image, :is_sales_active)
+    params.require(:item).permit(:name, :explanation, :price, :image, :is_sales_active, :genre_id)
   end
 end

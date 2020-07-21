@@ -6,12 +6,12 @@ Rails.application.routes.draw do
      resources :customers, only: [:new, :show, :edit, :update, :confirm]
 
   end
-  
+
   root 'home#index'
   resources :items, only: [:index, :show]
-  
-  resources :carts, only: [:index,create,update,destroy]
-  
+
+  resources :carts, only: [:index,:create,:update,:destroy]
+
   delete '/carts' => 'customers/carts#destroy'
 
 
@@ -23,8 +23,7 @@ Rails.application.routes.draw do
     post 'admin/sign_in' => 'admin/sessions#create', as: 'admin_session'
     delete 'admin/sign_out' => 'admin/sessions#destroy', as: 'destroy_admin_session'
   end
-  
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
