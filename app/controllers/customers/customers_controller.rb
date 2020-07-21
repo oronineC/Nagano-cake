@@ -19,6 +19,7 @@ before_action :ensure_correct_customer, only: [:edit, :update]
   end
 
   def confirm
+     @customer =Customer.find(params[:id])
   end
   
   def hide
