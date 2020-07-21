@@ -10,9 +10,8 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :items, only: [:index, :show]
   
-  resources :carts, only: [:index]
-  get '/carts' => 'customers/carts#index'
-  post '/carts' => 'customers/carts#create'
+  resources :carts, only: [:index,create,update,destroy]
+  
   delete '/carts' => 'customers/carts#destroy'
 
 
