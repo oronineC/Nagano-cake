@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
 	  when Admin
 	    admin_top_path
 	  when Customer
-
 	    root_path(resource)
 	  end
 	end
