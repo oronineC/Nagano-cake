@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
   namespace :customers do
-     get 'customers/confirm'
+     get 'customers/:id/confirm' => 'customers#confirm', as: 'customer_confirm'
+    # patch 'customers/:id/confirm' => 'customers#destroy', as: 'customer_destroy'
+      put "customers/:id/hide" => "customers#hide", as: 'customers_hide'
      resources :customers, only: [:new, :show, :edit, :update, :confirm]
+     resources :items, only: [:index, :show]
   end
+
+  root 'home#index'
+  resources :items, only: [:index, :show]
+
+
+  resources :carts, only: [:index,:create,:update,:destroy]
+
+  delete '/carts' => 'customers/carts#destroy'
+
 
   devise_for :customers
 
@@ -17,11 +29,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items
+    resources :genres
   	resources :customers
-    get 'homes/top' => 'homes#top'
+    get '/top' => 'homes#top'
   end
 
-  root to: 'home#top'
+  root to: 'customers/items#top'
   get 'home/about' => 'home#about'
+
 
 end

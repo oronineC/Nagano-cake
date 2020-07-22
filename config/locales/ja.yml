@@ -1,0 +1,7 @@
+ja:
+  enums:
+      item:
+        is_sales_active:
+          on_sale:  販売中
+          sold_out: 売切れ
+

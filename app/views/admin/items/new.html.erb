@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <h1>新規登録</h1>
+      <%= form_for(@item, url: admin_items_path) do |f| %>
+      <div style = "margin-top: 100px; ">
+      <div class="col-3 order-md-last">
+        <div class="field row">
+            <%= f.attachment_field :image %>
+          </div>
+        </div>
+      <div class="col-9" id="item_form_main">
+        <div class="field">
+          <h4>商品名</h4>
+          <%= f.text_field :name, class: "col-xs-12 item_name" %>
+        </div>
+
+        <div class="field row">
+          <h4>商品説明</h4>
+          <%= f.text_area :explanation, class: "col-xs-12 item_explanation" %>
+        </div>
+
+        <div class="field row">
+          <h4>ジャンル</h4>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name ,class: "col-xs-12 item_genre" %>
+        </div>
+
+        <div class="field row">
+          <h4>税抜価格</h4>
+          <%= f.text_field :price, class: "col-xs-12 item_price"%><span> 円</span>
+        </div>
+
+        <div class="field row">
+          <h4>販売ステータス</h4>
+          <%= f.select :is_sales_active, Item.is_sales_actives.keys.map{|k| [I18n.t("enums.item.is_sales_active.#{k}"), k]}, class: "col-xs-12 item_is_salse_active" %>
+        </div>
+
+
+        <div class="actions row">
+          <%= f.submit "新規登録", class: "btn btn-primary col-xs-12" %>
+        </div>
+      <% end %>
+    </div>
+     </div>
+    </div>
+  </div>
+</div>
+
