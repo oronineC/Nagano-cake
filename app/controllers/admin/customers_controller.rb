@@ -1,22 +1,22 @@
 class Admin::CustomersController < ApplicationController
 	before_action :authenticate_admin!
    def index
-    @customers = Customers.page(params[:page]).per(5)
+    @customers = Customer.page(params[:page]).per(5)
   end
 
   def show
-  	@castomer = Customer.find(params[:id])
+  	@customer = Customer.find(params[:id])
   end
 
 
   def edit
-    @castomer = Castomer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    @castomer = Castomer.find(params[:id])
-    @castomer.update(castomer_params)
-    redirect_to admin_castomers_path, notice: "会員を編集しました。"
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+    redirect_to admin_customer_path, notice: "会員を編集しました。"
   end
 
 

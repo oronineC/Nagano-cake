@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <h4><%= @customer.lastNameKanji %>　<%= @customer.first_name_kanji %>さん登録情報編集</h4>
+
+    <%= form_for(@customer,url:customers_customer_path) do |f| %>
+    <table >
+        <tr>
+        　　<th>顧客</th>
+        　　<td><%= @customer.id %></td>
+        </tr>
+        <tr>
+            <td class="text-center">氏名</td>
+            <td class="text-center">
+                <%= f.text_field :lastNameKanji %>
+                <%= f.text_field :first_name_kanji %>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">フリガナ</td>
+            <td >
+                <%= f.text_field :last_name_kana %>
+                <%= f.text_field :first_name_kana %>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">郵便番号</td>
+            <td>
+                <%= f.text_field :postcode %>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">住所</td>
+            <td>
+                <%= f.text_area :street_address %>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">電話番号</td>
+            <td>
+                <%= f.text_field :phone_number %>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">メールアドレス</td>
+            <td>
+                <%= f.email_field :email %>
+            </td>
+        </tr>
+    </table>
+    <%= f.submit "編集内容を保存する",class:"btn btn-sm btn-primary mt-2" %>
+<% end %>

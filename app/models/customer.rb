@@ -8,4 +8,7 @@ class Customer < ApplicationRecord
     super && (self.is_customer_active == false)
   end
 
+  enum is_customer_active: { valid: true, withdrawal: false }
+  validates :is_customer_active, inclusion: {in: ["valid", "withdrawal"]}
+
 end
