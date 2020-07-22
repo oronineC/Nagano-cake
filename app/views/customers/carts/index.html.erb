@@ -8,7 +8,7 @@
         </h2>
       </div>
       <div class="col-lg-4">
-        <%= link_to 'カートを空にする', destroy_all_carts_path, method: :delete, class: 'btn btn-danger' %>
+        <%= link_to 'カートを空にする', destroy_all_customers_cart_path(@cart_item), method: :delete, class: 'btn btn-danger' %>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
     </div>
 
     <% sum_all = 0 %>
-    <% @carts.each do |carts| %>
+    <% @carts.each do |cart| %>
     <div class="row space-sm">
       <div class="col-lg-3">
         <%= link_to item_path(carts.item) do %>
