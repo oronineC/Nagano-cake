@@ -21,7 +21,7 @@
 
         <div class="field row">
           <h4>ジャンル</h4>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name ,class: "col-xs-12 item_genre" %>
+          <%= f.collection_select :genre_id, Genre.where(is_active_status: 1), :id, :name, :prompt => "---選択してください---" ,class: "col-xs-12 item_genre" %>
         </div>
 
         <div class="field row">
