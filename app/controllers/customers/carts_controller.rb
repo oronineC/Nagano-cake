@@ -27,8 +27,8 @@ before_action :setup_cart_item!, only: [:create, :update, :delete]
     end
     def destroy_all
       @cart.item =
-      @cart_item.delete_all
-      redirect_to carts_path
+      @cart_item.destroy
+      redirect_back(fallback_location: root_path)
     end
     private
     def setup_cart_item!
