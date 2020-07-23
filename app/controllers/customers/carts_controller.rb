@@ -1,37 +1,38 @@
 class Customers::CartsController < ApplicationController
 
-before_action :setup_cart_item!, only: [:create_item, :update_item, :delete_item]
+before_action :setup_cart_item!, only: [:create, :update, :delete]
+
+    def index
+    @cart_items = Cart.all
+
+    end
 
     # 商品詳細画面から、「カートに入れる」を押した時のアクション
-    def index
-    @cart
-    end
-    
     def create
-      @cart_item = current_customer.cart_items.new(cart_item_params)
-      @cart_items = current_customer.cart_items.all
-      @cart_items.each do |cart_item|
-        if cart_item.item_id == @cart_item.item_id
-           new_quantity = cart_item.quantity + @cart_item.quantity
-           cart_item.update_attribute(:quantity, new_quantity)
-           @cart_item.delete
-        end 
-     end
-      @cart_item.save
+        if @cart_item.blank?
+           @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
+        end
 
-    redirect_to carts_path
+        @cart_item.quantity += params[:quantity].to_i
+        @cart_item.save
+        redirect_to carts_path
     end
 
 
     # カート詳細画面から、「更新」を押した時のアクション
-    def update_item
+    def update
       @cart_item.update(quantity: params[:quantity].to_i)
       redirect_to　carts_path
     end
-end
+
     # カート詳細画面から、「削除」を押した時のアクション
-    def delete_item
+    def destroy
       @cart_item.destroy
+      redirect_to carts_path
+    end
+
+    def destroy_all
+      @cart_item.delete_all
       redirect_to carts_path
     end
 
@@ -40,4 +41,4 @@ end
     def setup_cart_item!
       @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
     end
-
+end
