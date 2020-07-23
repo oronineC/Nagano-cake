@@ -1,27 +1,14 @@
 Rails.application.routes.draw do
   namespace :customers do
      get 'customers/:id/confirm' => 'customers#confirm', as: 'customer_confirm'
-    # patch 'customers/:id/confirm' => 'customers#destroy', as: 'customer_destroy'
+     #patch 'customers/:id/confirm' => 'customers#destroy', as: 'customer_destroy'
       put "customers/:id/hide" => "customers#hide", as: 'customers_hide'
      resources :customers, only: [:new, :show, :edit, :update, :confirm]
      resources :items, only: [:index, :show]
-<<<<<<< HEAD
      resources :carts, only: [:index, :create, :update, :destroy]
-     delete '/carts' => 'customers/carts#destroy_all'
+      delete '/carts' => 'carts#destroy_all'
 
   end
-
-  
-  resources :carts, only: [:index, :create, :update, :destroy]
-  
-  delete '/carts' => 'customers/carts#destroy_all'
-=======
-     resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
-     resources :carts, only: [:index, :create, :update, :destroy]
-
-  end
->>>>>>> ebf4eedcff9f00bd499322b75a395ae6042087d6
-
 
   devise_for :customers
 
