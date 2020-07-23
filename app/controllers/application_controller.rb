@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     else
       @cart = Cart.create
       session[:cart_id] = @cart.id
-    end
+		end
   end
 
   protected
@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
 	    root_path(resource)
 	  end
 	end
-
 
 	def after_sign_out_path_for(resource)
 	    new_session_path(resource)

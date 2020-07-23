@@ -24,13 +24,13 @@ class Customers::ItemsController < ApplicationController
       @info = "商品"
     end
 
-    @counts = @items.total_count
+    @counts = @items.count
 
   end
 
   def show
   	@genres = Genre.where(is_active_status: 1)
   	@item = Item.find(params[:id])
-
+    @cart = Cart.new
   end
 end

@@ -22,7 +22,7 @@ class CustomersCartsController < ApplicationController
     def update_item
       @cart_item.update(quantity: params[:quantity].to_i)
       redirect_to　carts_path
-  end
+    end
 end
     # カート詳細画面から、「削除」を押した時のアクション
     def delete_item
@@ -34,4 +34,8 @@ end
 
     def setup_cart_item!
       @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
+<<<<<<< HEAD
    end
+=======
+     end
+>>>>>>> ebf4eedcff9f00bd499322b75a395ae6042087d6
