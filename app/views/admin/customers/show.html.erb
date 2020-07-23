@@ -1,9 +1,12 @@
 <h4><%= @customer.lastNameKanji %>　<%= @customer.first_name_kanji %>さん登録情報編集</h4>
 <table class='table table-type'>
       <tr>
-        <th>顧客</th>
-        <td><%= @customer.id %></td>
-        <td><%= @customer.is_customer_active_i18n %>会員</td>
+        <th>顧客ID</th>
+        <td><%= @customer.id %>  
+            <span class="badge badge-primary">
+              <%= @customer.is_customer_active_i18n %>会員
+            </span>
+        </td>
       </tr>
       <tr>
     	  <th>氏名</th>

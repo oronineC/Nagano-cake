@@ -7,7 +7,7 @@ Rails.application.routes.draw do
      resources :items, only: [:index, :show]
      resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
      resources :carts, only: [:index, :create, :update, :destroy]
-    　delete '/carts' => 'customers/carts#destroy_all'
+     delete '/carts' => 'customers/carts#destroy_all'
   end
 
   devise_for :customers
