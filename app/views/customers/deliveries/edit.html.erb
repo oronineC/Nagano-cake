@@ -1,0 +1,27 @@
+<h2>配送先編集</h2>
+
+<div class="col-md-12">
+<%= form_for @delivery, url:customers_delivery_path(@delivery), method: :patch do |f| %>
+
+  <div class="field">
+    <%= f.label "郵便番号（ハイフンなし）" %>
+    <%= f.text_field :postcode, class: "postcode" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "住所" %>
+    <%= f.text_field :street_address, class: "street_address" %>
+  </div>
+
+   <div class="field">
+    <%= f.label "宛名" %>
+    <%= f.text_field :address, class: "address" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "編集する", class: "btn btn-primary"%>
+  </div>
+
+<% end %>
+</div>

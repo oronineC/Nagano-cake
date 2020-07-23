@@ -9,10 +9,21 @@
     	<%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "", size:'300x200' %>
   	</div>
 </div>
-<div class="col-4">
+<div class="col-5">
  	<h2><%= @item.name %></h2>
   	<%= @item.explanation %>
   	<h4>￥<%= addTax(@item.price,1.1) %>(税込)</h4>
+</div>
+
+<div class="col-5 offset-7">
+	<%= form_for @cart, url: customers_carts_path(@cart) do |f| %>
+    	<% if customer_signed_in? %>
+        	<%= f.hidden_field :item_id, :value => @item.id %>
+        	<%= f.label :quantity, "個数選択" %>
+        	<%= f.select :quantity, [1,2,3,4,5,6,7,8,9] %>
+        	<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+    	<% end %>
+	<% end %>
 </div>
 
 

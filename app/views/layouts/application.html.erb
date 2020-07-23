@@ -22,7 +22,8 @@
           <% if customer_signed_in? %>
             <li><%= link_to 'マイページ', customers_customer_path(current_customer.id), class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '商品一覧', customers_items_path, class: 'btn btn-outline-dark' %></li>
-            <li><%= link_to 'カート', "#", class: 'btn btn-outline-dark' %></li>
+            <li><%= link_to 'カート', customers_carts_path,  class: 'btn btn-outline-dark' %></li>
+
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-dark' %></li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
