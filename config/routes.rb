@@ -7,6 +7,8 @@ Rails.application.routes.draw do
      resources :items, only: [:index, :show]
      resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
      resources :carts, only: [:index, :create, :update, :destroy]
+     resources :orders, only:[:new,:create,:index,:show]
+     get 'orders/thanks' => 'orders#thanks'
 
   end
 
