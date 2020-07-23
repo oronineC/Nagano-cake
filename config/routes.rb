@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       put "customers/:id/hide" => "customers#hide", as: 'customers_hide'
      resources :customers, only: [:new, :show, :edit, :update, :confirm]
      resources :items, only: [:index, :show]
+     resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
+     resources :carts, only: [:index, :create, :update, :destroy]
+    　delete '/carts' => 'customers/carts#destroy_all'
   end
 
   devise_for :customers

@@ -10,12 +10,11 @@ class ApplicationController < ActionController::Base
     else
       @cart = Cart.create
       session[:cart_id] = @cart.id
-    end
+		end
   end
 
   protected
 
-	#仮設定
 	def after_sign_in_path_for(resource)
 	  case resource
 	  when Admin
@@ -25,8 +24,6 @@ class ApplicationController < ActionController::Base
 	  end
 	end
 
-
-  #仮設定
 	def after_sign_out_path_for(resource)
 	    new_session_path(resource)
 	end
