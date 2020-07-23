@@ -24,7 +24,7 @@ class Customers::ItemsController < ApplicationController
       @info = "商品"
     end
 
-    @counts = @items.total_count
+    @counts = @items.count
 
   end
 
