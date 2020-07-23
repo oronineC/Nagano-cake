@@ -43,6 +43,30 @@ li {
 	 margin: 20px 20px;
 }
 
+#nav-message {
+	margin-right: 50px;
+	line-height: 30px;
+}
+
+.main-visual {
+  width: 700px;
+  height: 280px;
+  margin-top: 20px;
+  background-image: url(bg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+
+.main-visual-text {
+  width: 400px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 200%;
+  background-color: rgba(255,255,255,0.7);
+}
+
+
 .genre_search {
 	border: solid 2px #000;
 	padding: 10px;

@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/13c8637a3c.js" crossorigin="anonymous"></script>
   </head>
 
   <header class="navbar clearfix navbar-fixed-top navbar-inverse">
@@ -20,6 +21,7 @@
         <ul class="nav justify-content-end">
             <!-- 顧客ログイン時 -->
           <% if customer_signed_in? %>
+            <li id="nav-message">ようこそ、<%= current_customer.lastNameKanji %>さん！</li>
             <li><%= link_to 'マイページ', customers_customer_path(current_customer.id), class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '商品一覧', customers_items_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to 'カート', customers_carts_path,  class: 'btn btn-outline-dark' %></li>
@@ -27,6 +29,7 @@
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-dark' %></li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
+            <li id="nav-message">おかえりなさいませ、ご主人様！</li>
             <li><%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '会員一覧', "#", class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '注文履歴一覧', "#", class: 'btn btn-outline-dark' %></li>
