@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   namespace :customers do
      get 'customers/:id/confirm' => 'customers#confirm', as: 'customer_confirm'
-    # patch 'customers/:id/confirm' => 'customers#destroy', as: 'customer_destroy'
+     patch 'customers/:id/confirm' => 'customers#destroy', as: 'customer_destroy'
       put "customers/:id/hide" => "customers#hide", as: 'customers_hide'
      resources :customers, only: [:new, :show, :edit, :update, :confirm]
      resources :items, only: [:index, :show]
-     resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
      resources :carts, only: [:index, :create, :update, :destroy]
+     delete '/carts' => 'carts#destroy_all'
      resources :orders, only:[:new,:create,:index,:show]
      get 'orders/thanks' => 'orders#thanks'
 
