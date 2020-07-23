@@ -31,6 +31,6 @@ class Customers::ItemsController < ApplicationController
   def show
   	@genres = Genre.where(is_active_status: 1)
   	@item = Item.find(params[:id])
-
+    @cart = Cart.new
   end
 end
