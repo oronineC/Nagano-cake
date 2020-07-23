@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   
     delete '/carts' => 'carts#destroy_all'
 
+
   end
+
 
   devise_for :customers
 
