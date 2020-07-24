@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
      resources :orders, only:[:new,:create,:index,:show]
      get 'orders/thanks' => 'orders#thanks'
+     resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
 
 
   end
