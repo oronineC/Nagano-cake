@@ -1,44 +1,43 @@
 class Customers::CartsController < ApplicationController
 
-before_action :setup_cart_item!, only: [:create, :update, :delete]
-
     def index
-    @cart_items = Cart.all
-
+    @carts = Cart.all
     end
 
     # 商品詳細画面から、「カートに入れる」を押した時のアクション
     def create
-        if @cart_item.blank?
-           @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-           @cart_item = Cart.new(cart_item_params)
-           @cart_item.item_id = paramas[:item_id]
-        end
-        @cart_item.quantity += params[:quantity].to_i
-        @cart_item.save
-        redirect_to carts_path
+      @cart_new = Cart.new(cart_params)
+      if current_customer.carts.find_by(item_id: @cart_new.item_id)
+        @cart = current_customer.carts.find_by(item_id: @cart.item_id)
+        @cart.quantity += @cart_new.quantity
+        @cart.update
+      else
+        @cart_new.customer_id = current_customer.id
+        @cart_new.save
+      end
+      redirect_to customers_carts_path
     end
     # カート詳細画面から、「更新」を押した時のアクション
     def update
-      @cart_item.update(quantity: params[:quantity].to_i)
-      redirect_to　carts_path
+      @cart.update(quantity: params[:quantity].to_i)
+      redirect_to　customers_carts_path
     end
 
     # カート詳細画面から、「削除」を押した時のアクション
     def destroy
-      @cart_item.destroy
-      redirect_to carts_path
+      cart = Cart.find(params[:id])
+      cart.destroy
+      redirect_to customers_carts_path
     end
 
-
     def destroy_all
-      @cart.item =
-      @cart_item.destroy
+      current_customer.carts.destroy_all
       redirect_back(fallback_location: root_path)
     end
 
     private
-    def setup_cart_item!
-      @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
+    def cart_params
+      params.require(:cart).permit(:quantity, :item_id)
     end
 end
+
