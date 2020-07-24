@@ -10,7 +10,7 @@ class Customers::CartsController < ApplicationController
         @cart = current_customer.carts.find_by(item_id: @cart.item_id)
         @cart.quantity += @cart_new.quantity
         @cart.update
-      else 
+      else
         @cart_new.customer_id = current_customer.id
         @cart_new.save
       end
