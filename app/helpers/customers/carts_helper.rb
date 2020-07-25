@@ -1,6 +1,6 @@
 module Customers::CartsHelper
-    def addTax(money,rate)
-		taxed_money = (money*rate).round
-		"#{taxed_money}"
+	def price_include_tax(price)
+    	price = price * 1.1
+    	"#{price.floor}円"
 	end
 end
