@@ -1,5 +1,4 @@
 class Customers::CartsController < ApplicationController
-
     def index
     @carts = Cart.all
     end
@@ -11,7 +10,7 @@ class Customers::CartsController < ApplicationController
         @cart = current_customer.carts.find_by(item_id: @cart.item_id)
         @cart.quantity += @cart_new.quantity
         @cart.update
-      else 
+      else
         @cart_new.customer_id = current_customer.id
         @cart_new.save
       end
@@ -19,7 +18,8 @@ class Customers::CartsController < ApplicationController
     end
     # カート詳細画面から、「更新」を押した時のアクション
     def update
-     cart = Cart.find(params[:id])
+
+      cart = Cart.find(params[:id])
       cart.update(cart_params)
       redirect_to customers_carts_path
     end

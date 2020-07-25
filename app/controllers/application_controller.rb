@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
 	protected
 	def configure_permitted_parameters
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastNameKanji, :first_name_kanji, :last_name_kana, :first_name_kana, :postcode, :street_address, :phone_number, :email, :password, :password_confirmation ])
-	    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :email])
+	    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastNameKanji, :first_name_kanji, :last_name_kana, :first_name_kana, :postcode, :street_address, :phone_number, :email, :password, :password_confirmation, :is_customer_active ])
+	    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :email, :is_customer_active])
 	end
 end

@@ -32,7 +32,7 @@ before_action :ensure_correct_customer, only: [:edit, :update]
 
   def hide
     @customer =Customer.find(params[:id])
-    @customer.update(is_customer_active: true)
+    @customer.update(is_customer_active: false)
     reset_session
      redirect_to root_path
   end
@@ -47,6 +47,6 @@ before_action :ensure_correct_customer, only: [:edit, :update]
   end
 
     def customer_params
-    params.require(:customer).permit(:lastNameKanji, :first_name_kanji, :last_name_kana, :first_name_kana, :email, :postcode, :street_address, :phone_number)
+    params.require(:customer).permit(:lastNameKanji, :first_name_kanji, :last_name_kana, :first_name_kana, :email, :postcode, :street_address, :phone_number, :is_customer_active)
     end
 end

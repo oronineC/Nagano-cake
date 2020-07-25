@@ -4,4 +4,8 @@ ja:
         is_sales_active:
           on_sale:  販売中
           sold_out: 売切れ
+      customer:
+        is_customer_active:
+          valid_member: 有効
+          withdrawal: 退会済
 

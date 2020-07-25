@@ -1,0 +1,17 @@
+<h2>注文履歴詳細</h2>
+    <div class="row">
+	    <p>購入者</p>　　
+		<p><%= @order.order_item.customer.name.id %></p>
+	</div>
+	<div class="row">
+		<p>配送先</p>　　
+		<p><%= @item.explanation%></p>
+    </div>
+    <div class="row">
+		<p>支払い方法</p>　　
+		<p><%= @item.genre.name%></p>
+    </div>
+    <div class="row">
+		<p>注文ステータス</p>　　
+		<p><%= @item.is_sales_active_i18n %></p>
+    </div>

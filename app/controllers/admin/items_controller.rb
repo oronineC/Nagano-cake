@@ -25,7 +25,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to admin_items_path(@item), notice: "商品を編集しました。"
+    redirect_to admin_item_path(@item), notice: "商品を編集しました。"
   end
 
   def destroy

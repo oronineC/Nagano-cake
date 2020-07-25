@@ -35,7 +35,7 @@
         <% end %>
       </div>
       <div class="col-lg-2">
-        
+
       </div>
       <div class="col-lg-2">
         <%= form_with model: cart, url: customers_cart_path(cart), local: true do |f| %>
@@ -44,8 +44,10 @@
         <% end %>
       </div>
       <div class="col-lg-2">
+        
         ￥<%#= addTax(@item.price,1.1) %>(税込)
         
+
       </div>
       <div class="col-lg-1">
         <%= link_to "削除する", customers_cart_path(cart), method: :delete, class: "btn btn-danger"%>
