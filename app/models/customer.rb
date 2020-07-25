@@ -5,10 +5,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-   enum is_customer_active:{
-        valid_member: true,
-        withdrawal: false,
-   }
+
   # validates :is_customer_active, inclusion: {in: ["valid_member", "withdrawal"]}
   # validates :is_customer_active, inclusion: { in: [true, false] }
 
@@ -16,7 +13,9 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   def active_for_authentication?
-    super && (self.is_customer_active == false)
+    super && (self.is_customer_active == true)
   end
+
+  
 
 end

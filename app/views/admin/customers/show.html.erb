@@ -4,7 +4,11 @@
         <th>顧客ID</th>
         <td><%= @customer.id %>  
             <span class="badge badge-primary">
-              <%= @customer.is_customer_active_i18n %>会員
+            <% if @customer.is_customer_active == true %>
+              有効会員
+            <% else %>
+              退会済会員
+            <% end %>
             </span>
         </td>
       </tr>

@@ -51,12 +51,12 @@
             <div class="form-check form-check-inline">
                 <%= form_with(model: @customer, url: admin_customer_path(@customer.id)) do |f| %>
                     <div class="radio-inline">
-                      <%= f.radio_button :is_customer_active, :valid_member %>
-                      <%= f.label :is_customer_active, '有効', value: :valid_member %>
+                      <%= f.radio_button :is_customer_active, :true %>
+                      <%= f.label :is_customer_active, '有効', value: :true %>
                     </div>
                     <div class="radio-inline">
-                      <%= f.radio_button :is_customer_active, :withdrawal %>
-                      <%= f.label :is_customer_active, '退会済', value: :withdrawal %>
+                      <%= f.radio_button :is_customer_active, :false %>
+                      <%= f.label :is_customer_active, '退会済', value: :false %>
                     </div>
                 <% end %>
             </div>

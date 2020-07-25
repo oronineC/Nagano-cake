@@ -29,7 +29,7 @@
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-dark' %></li>
           <!-- 管理者ログイン時 -->
           <% elsif admin_signed_in? %>
-            <li id="nav-message">おかえりなさいませ、ご主人様！</li>
+            <li id="nav-message">管理者！</li>
             <li><%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '会員一覧', admin_customers_path, class: 'btn btn-outline-dark' %></li>
             <li><%= link_to '注文履歴一覧', "#", class: 'btn btn-outline-dark' %></li>
