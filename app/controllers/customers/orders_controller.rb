@@ -17,6 +17,11 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def confirm
+	    @order = Order.new
+	    @carts = current_customer.cart
+	    @order.method_of_payment = params[:order][:method_of_payment]
+	    # 住所のラジオボタン選択に応じて引数を調整
+	    @add = params[:order][:add].to_i
 	end
 
 	def thanks
