@@ -1,12 +1,10 @@
-<h2>新規会員登録</h2>
-
-<div class="container">
+<div class="col-12">
+  <h2>新規会員登録</h2>
+</div>
 
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-<div class="row">
-  <div class="col-3">
     <div class="form-group">
     <%= f.label :lastNameKanji, "（姓）" %>
     <%= f.text_field :lastNameKanji, autofocus: true, autocomplete: "（姓）" %>
@@ -57,7 +55,7 @@
   <div class="actions">
     <%= f.submit "新規登録", class: "btn btn-success" %>
   </div>
-  <h2>既に登録済みの方</h2>
+  <h3>既に登録済みの方</h3>
 <h4>
   <%= link_to "こちら", "/customers/sign_in" %>からログインしてください。
 </h4>

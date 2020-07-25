@@ -11,7 +11,7 @@ class Customers::DeliveriesController < ApplicationController
 		@delivery = Delivery.new(delivery_params)
   		@delivery.customer_id = current_customer.id
   		@delivery.save
-  		redirect_back(fallback_location: root_path)
+  		redirect_to customers_deliveries_path(@delivery.id)
 	end
 
 	def edit

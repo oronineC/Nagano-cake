@@ -18,7 +18,9 @@ class Customers::CartsController < ApplicationController
     end
     # カート詳細画面から、「更新」を押した時のアクション
     def update
-      @cart.update(quantity: params[:quantity].to_i)
+
+      cart = Cart.find(params[:id])
+      cart.update(cart_params)
       redirect_to customers_carts_path
     end
 
