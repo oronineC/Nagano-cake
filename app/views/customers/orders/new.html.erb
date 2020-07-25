@@ -10,7 +10,7 @@
     
     <h4>届け先</h4>
     <label>
-      <%#= f.radio_button %>ご自身の住所
+      <%#= f.radio_button : %>ご自身の住所
     </label>
     <p><%= current_customer.postcode %></p>
      <p><%= current_customer.street_address %></p>
@@ -22,7 +22,7 @@
     
 
     
-   <%= f.collection_select :delivery_id, current_customer.deliveries.all, :postcode, :street_address %>
+   <%= f.collection_select :delivery, current_customer.deliveries.all, :street_address, :address %>
     
     
     
