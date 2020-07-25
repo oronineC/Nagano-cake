@@ -22,7 +22,7 @@
     
 
     
-   <%= f.collection_select :delivery, current_customer.deliveries.all, :street_address, :address %>
+    <%= f.collection_select :delivery_address, @customer.delivery_street_address, :id, :delivery_street_address %>
     
     
     <p>
