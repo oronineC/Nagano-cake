@@ -15,15 +15,19 @@
   	<h4>￥<%= addTax(@item.price,1.1) %>(税込)</h4>
 </div>
 
-<div class="col-5 offset-7">
-	<%= form_for @cart, url: customers_carts_path(@cart) do |f| %>
+<% if @item.is_sales_active == "sold_out" %>
+<h4>売り切れ中</h4>
+<% else %>
+  <div class="col-5 offset-7">
+	  <%= form_for @cart, url: customers_carts_path(@cart) do |f| %>
     	<% if customer_signed_in? %>
-        	<%= f.hidden_field :item_id, :value => @item.id %>
-        	<%= f.label :quantity, "個数選択" %>
-        	<%= f.select :quantity, [1,2,3,4,5,6,7,8,9] %>
-        	<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.label :quantity, "個数選択" %>
+        <%= f.select :quantity, [1,2,3,4,5,6,7,8,9] %>
+        <%= f.submit "カートに入れる", class: "btn btn-primary" %>
     	<% end %>
-	<% end %>
-</div>
+	  <% end %>
+  </div>
+<% end %>
 
 
