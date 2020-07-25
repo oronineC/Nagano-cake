@@ -25,7 +25,7 @@ class Customers::OrdersController < ApplicationController
 					@order.delivery_address = @customer.current_customer.lastNameKanji+current_customer.first_name_kanji
 					
 				when 2
-					@order.delivery_post_code = params[:order][:postcode]
+					@order.delivery_post_code = params[:order][:delivery_post_code]
 					@order.delivery_street_address = params[:order][:delivery_street_address]
 					@order.delivery_address = params[:order][:delivery_address]
 					
@@ -45,10 +45,10 @@ class Customers::OrdersController < ApplicationController
 				@delivery.save
 			end
 			
-			current_customer.cart.each do |cart|
+			current_customer.carts.each do |cart|
 				order_item = @order.order_items.build
 				order_item.order_id = @order.id
-				order_item.item_id = cart.item_id
+				order_item.item_id = cart.item_id 
 				order_item.order_quantity = cart.quantity
 				order_item.order_price = cart.item.price
 				order_item.save
@@ -63,6 +63,29 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def confirm
+		@order = Order.new
+		@carts = current_customer.carts
+		@order.method_of_payment = params[:order][:method_of_payment].to_i
+		@add = params[:order][:add].to_i
+		case @add
+			when 1
+				@order.delivery_post_code = current_customer.postcode
+				@order.delivery_street_address = current_customer.street_address
+				@order.delivery_address = current_customer.lastNameKanji+current_customer.first_name_kanji
+					
+			when 2
+				@oro = params[:order][:delivery_street_address].to_i
+				@delivery_street_address = Delivery.find(@oro)
+				@order.delivery_post_code = @delivery_street_address.postcode
+				@order.delivery_street_address = @delivery_street_address.street_address
+				@order.delivery_address = @delivery_street_address.address
+					
+			when 3
+				@order.delivery_post_code = params[:order][:new_add][:delivery_post_code]
+				@order.delivery_street_address = params[:order][:new_add][:delivery_street_address]
+				@order.delivery_address = params[:order][:new_add][:delivery_address]
+		end
+		
 	end
 
 	def thanks
