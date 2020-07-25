@@ -5,11 +5,17 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  # validates :is_customer_active, inclusion: {in: ["valid_member", "withdrawal"]}
+  # validates :is_customer_active, inclusion: { in: [true, false] }
+
   has_many :deliveries
   has_many :orders, dependent: :destroy
 
   def active_for_authentication?
-    super && (self.is_customer_active == false)
+    super && (self.is_customer_active == true)
   end
+
+  
 
 end

@@ -1,8 +1,6 @@
 <div class="col-12">
   <h2>登録済みの方はこちら</h2>
 </div>
-
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group form-group-lg">
     <%= f.label :email %>
@@ -29,7 +27,4 @@
 <div class="col-12">
   <%= render "devise/shared/links" %>
 </div>
-
-
-
 
