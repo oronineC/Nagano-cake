@@ -9,6 +9,8 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def new
+		@order= Order.new
+		@order.customer_id= current_customer.id
 	end
 
 	def create
