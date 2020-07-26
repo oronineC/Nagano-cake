@@ -27,18 +27,6 @@
     <%= f.collection_select :delivery, current_customer.deliveries.all, :street_address, :address %>
     
     
-    <p>
-    <label>
-        <%=f.radio_button :add, 3 %>新しいお届け先
-    </label>
-    </p>
-    <p>郵便番号
-      <%=f.text_field :postcode %></p>
-    <p>住所
-      <%=f.text_field :street_address %></p>
-    <p>宛名
-      <%=f.text_field :address %></p>
-      <%= f.submit "確認画面へ進む" %>
   <% end %>
 </div>
      

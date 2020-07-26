@@ -1,17 +1,83 @@
 <h2>注文履歴詳細</h2>
     <div class="row">
-	    <p>購入者</p>　　
-		<p><%= @order.order_item.customer.name.id %></p>
+       <p>購入者</p>
+	   <p><%= @order.customer.name.id %></p>
 	</div>
 	<div class="row">
-		<p>配送先</p>　　
-		<p><%= @item.explanation%></p>
+		<p>配送先</p>
+		<p>
+		   <%= @order.delivery_post_code %>
+           <%= @order.delivery_street_address %>
+        </p>
+        <p><%= @order.delivery_address %></p>
     </div>
     <div class="row">
-		<p>支払い方法</p>　　
-		<p><%= @item.genre.name%></p>
+		<p>支払い方法</p>
+		<p><%= @order.method_of_payment %></p>
     </div>
     <div class="row">
-		<p>注文ステータス</p>　　
-		<p><%= @item.is_sales_active_i18n %></p>
+    	<%= form_for(order, url: admin_order_path(@order)) do |f| %>
+          <h4>注文ステータス</h4>
+          <%= f.select :order_status, Order.order_status.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"), k]},:prompt => "---選択してください---", class: "col-xs-12 item_is_salse_active" %>
+            <%= f.submit "更新",class: "btn btn-primary col-xs-12" %>
+        <% end %>
     </div>
+
+    <div class="row">
+    	<div class="col-8">
+		    <table class="table">
+		      <thead class="thead-light">
+		        <tr>
+		          <th>商品名</th>
+		          <th>単価（税込）</th>
+		          <th>数量</th>
+		          <th>小計</th>
+		          <th>制作ステータス</th>
+		        </tr>
+		      </thead>
+
+		      <tbody>
+		      	<tr>
+		          <% @order_items.each do |order_item| %>
+		          <td><%= order_item.iteme.name %></td>
+		          <td><%= price_include_tax(order_item.price) %></td>
+		          <td><%= order_item.quantity %></td>
+		          <td>
+		          	<%= sum_item = price_include_tax(order_item.price).to_i * order_item.quantity %>円
+                     <% sum_all += sum_item %>
+		          </td>
+		          <td>
+		          	<%= f.fields_for(@order, url: admin_order_path(@order)) do |f| %>
+		          	  <%= f.select :production_status, Order_item.production_status.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]},:prompt => "---選択してください---", class: "col-xs-12 item_is_salse_active" %>
+		          	  <%= f.submit "更新",class: "btn btn-primary col-xs-12" %>
+                    <% end %>
+                   </td>
+		        </tr>
+		        <% end %>
+		      </tbody>
+		    </table>
+		</div>
+		<div class="col-8">
+		    <table class="table">
+		      <thead class="thead-light">
+		        <tr>
+		          <th>商品合計</th>
+		          <th>送料（税込）</th>
+		          <th>請求金額合計</th>
+		        </tr>
+		      </thead>
+
+		      <tbody>
+		      	<tr>
+		          <td><%= @order.postage %>円</td>
+		          <td> <%= sum_all.to_i %>円</td>
+		          <td><%= order_item.quantity %></td>
+		          <td>
+					<% billling_amount = sum_all + @order.postage.to_i %>
+					<%= billling_amount.to_i %>円
+		          </td>
+		        </tr>
+		        <% end %>
+		      </tbody>
+		    </table>
+	</div>

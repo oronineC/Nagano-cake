@@ -15,7 +15,7 @@
         <% @orders.each do |order| %>
         <tr>
           <td><%= order.created_at %></td>
-          <td><%= order.order_item.customer.name.id %></td>
+          <td><%= order.customer.name.id %></td>
           <td><%= order.order_item.quantiiy %></td>
           <td><%= order.order_status %></td>
         </tr>
