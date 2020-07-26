@@ -8,4 +8,17 @@ ja:
         is_customer_active:
           valid_member: 有効
           withdrawal: 退会済
+      order:
+        order_status:
+          waiting_for_payment: 入金待ち
+          payment_confurnatuin: 入金確認
+          in_production: 制作中
+          preparing_to_ship: 発送準備中
+          shipped: 発送済み
+      order_item:
+        production_status:
+          waiting: 着手不可
+          waiting_for_production: 制作待ち
+          in_production: 製作中
+          productio_completd: 制作完了
 
