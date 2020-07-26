@@ -4,9 +4,9 @@
     <%= form_with(model: @order, local: true, url: customers_orders_confirm_path, method: :post) do |f| %>
 		<h4>支払方法</h4>
 		<%= f.radio_button :method_of_payment, 0, checked: "checked" %>
-		クレジットカード
+		<%= f.label :metod_of_payment, "クレジットカード" %>
 		<%= f.radio_button :method_of_payment, 1 %>
-	   銀行振込
+	  <%= f.label :metod_of_payment, "銀行振込" %>
 
     <h4>届け先</h4>
     <label>
@@ -20,10 +20,10 @@
       <%= f.radio_button :add, 2, style: "display: inline-block" %>登録済み住所から選択
     </label>
 
-    <%#= f.collection_select :delivery_address, @customer.delivery_street_address, :id, :delivery_street_address %>
 
 
-    <%= f.collection_select :delivery, current_customer.deliveries.all, :street_address, :address %>
+    <%= f.collection_select :delivery_street_address, @customer.deliveries.all, :id, :street_address %>
+
 
     <p>
     <label>
