@@ -29,14 +29,14 @@
         <%=f.radio_button :add, 3 %>新しいお届け先
     </label>
     </p>
-    <%= f.fields_for :new_add do |na| %>
-      <p>郵便番号
-        <%=na.text_field :postcode %></p>
-      <p>住所
-        <%=na.text_field :street_address %></p>
-      <p>宛名
-        <%=na.text_field :address %></p>
-    <% end %>
-    <%= f.submit "確認画面へ進む" %>
+     <%= f.fields_for :new_add do |na| %>
+    <p>郵便番号(ハイフンなし)
+      <%=na.text_field :postcode %></p>
+    <p>住所
+      <%=na.text_field :street_address %></p>
+    <p>宛名
+      <%=na.text_field :address %></p>
+      <% end %>
+      <%= f.submit "確認画面へ進む" %>
   <% end %>
 </div>
