@@ -12,7 +12,6 @@
       </thead>
 
       <tbody>
-        <% @orders.each do |order| %>
         <tr>
           <td><%= @order.customer.lastNameKanji %><%= @order.customer.first_name_kanji %></td>
           <td><%= @order.delivery_post_code %>
@@ -25,7 +24,6 @@
             <% end %>
           </td>
         </tr>
-        <% end %>
       </tbody>
     </table>
 
@@ -43,17 +41,22 @@
 		      </thead>
 
 		      <tbody>
+		      	  <% sum_all = 0 %>
 				  <% @order.order_items.each do |order_item| %>
 					<tr>
 						<td><%= order_item.item.name %></td>
 						<td><%= price_include_tax(order_item.order_price) %></td>
-						<td><%= order_item.order_quantity %></td>
-				          <td>
-							<%= form_for(order_item, url:  admin_order_item_path(order_item)) do |f| %>
-						          <%= f.select :production_status, OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
-						            <%= f.submit "更新",class: "btn btn-primary col-xs-12" %>
-						     <% end %>
-                           </td>
+					    <td><%= order_item.order_quantity %></td>
+						<td>
+							<%= sub_total = price_include_tax(order_item.order_price).to_i * order_item.order_quantity %>円
+	          			    <% sum_all += sub_total %>
+	          			</td>
+				        <td>
+						  <%= form_for(order_item, url:  admin_order_item_path(order_item)) do |f| %>
+						    <%= f.select :production_status, OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
+						     <%= f.submit "更新",class: "btn btn-primary col-xs-12" %>
+						   <% end %>
+                        </td>
 		            </tr>
 		           <% end %>
 		      </tbody>
@@ -71,7 +74,9 @@
 
 		      <tbody>
 		      	<tr>
+		      	  <td><%= sum_all %>円</td>
 		          <td><%= @order.postage %>円</td>
+		          <td><%= sum_all + @order.postage.to_i %>円</td>
 		        </tr>
 		      </tbody>
 		    </table>

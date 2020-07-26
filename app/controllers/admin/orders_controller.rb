@@ -7,12 +7,23 @@ class Admin::OrdersController < ApplicationController
 	def show
   	    @order = Order.find(params[:id])
   	    @orders = Order.all
-     end
+    end
+
+    def update
+    	@order = Order.find(params[:id])
+		@order.update(order_params)
+		#製作側が制作中か確認
+	if  @order_item.production_status ==  2
+		注文側の制作中
+		@order.update(order_status: 2)
+	end
+	   redirect_to admin_orders_path
+    end
 
      private
 
    private
 	def order_params
-	    params.require(:order).permit(:created_at, :delivery_street_address, :delivery_address, :delivery_post_code, :method_of_payment, :order_status, :total_fee)
+	    params.require(:order).permit(:order_status)
 	end
 end
