@@ -16,7 +16,9 @@
 </div>
 
 <% if @item.is_sales_active == "sold_out" %>
-<h4>売り切れ中</h4>
+  <div class="col-5 offset-7">
+    <h4><font color="red">売り切れ中</font></h4>
+  </div>
 <% else %>
   <div class="col-5 offset-7">
 	  <%= form_for @cart, url: customers_carts_path(@cart) do |f| %>
