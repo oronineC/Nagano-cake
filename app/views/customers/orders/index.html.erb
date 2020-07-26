@@ -27,7 +27,7 @@
             <% sum_all += sub_total.to_i %>
           <% end %>
         </td>
-        <td><%= sum_all += order.postage.to_i %></td>
+        <td><%= sum_all += order.postage.to_i %>円</td>
         <td><%= order.order_status %></td>
         <td><%= link_to "表示する", customers_order_path(order), class: "btn btn-primary" %></td>
       </tr>

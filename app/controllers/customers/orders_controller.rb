@@ -5,6 +5,9 @@ class Customers::OrdersController < ApplicationController
 		@orders = current_customer.orders
 	end
 
+	def thanks
+	end
+
 	def show
 		@order = Order.find(params[:id])
 	end
@@ -56,7 +59,7 @@ class Customers::OrdersController < ApplicationController
 				cart.destroy
 			end
 
-			redirect_to  customers_orders_thanks_path
+			redirect_to home_thanks_path
 
 		else
 			redirect_to root_path
@@ -89,8 +92,7 @@ class Customers::OrdersController < ApplicationController
 
 	end
 
-	def thanks
-	end
+
 
 	private
 	def order_params
