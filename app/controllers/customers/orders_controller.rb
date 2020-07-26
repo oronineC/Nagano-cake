@@ -1,5 +1,6 @@
 class Customers::OrdersController < ApplicationController
 	before_action :authenticate_customer!
+	before_action :set_customer
 
 	def index
 		@orders = current_customer.orders
@@ -95,6 +96,10 @@ class Customers::OrdersController < ApplicationController
 
 
 	private
+	def set_customer
+    	@customer = current_customer
+  	end
+
 	def order_params
 		params.require(:order).permit(:created_at, :delivery_street_address, :delivery_address, :delivery_post_code, :method_of_payment, :order_status, :total_fee, order_items_attributes: [:order_id, :item_id, :oreder_quantity, :order_price, :production_status])
 	end
