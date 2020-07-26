@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :genres
   	resources :customers
     resources :orders, only:[:create,:index,:show]
+    resources :order_items, only:[:update]
     get '/top' => 'homes#top'
   end
 
