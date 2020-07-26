@@ -21,7 +21,7 @@
         </td>
         <td>
           <% order.order_items.each do |order_item| %>
-            <%= order_item.item.item_name %>/
+            <%= order_item.item_name %>/
           <% end %>
         </td>
         <td><%= order.total_fee %></td>

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :items
     resources :genres
   	resources :customers
+    resources :orders, only:[:create,:index,:show]
     get '/top' => 'homes#top'
   end
 
