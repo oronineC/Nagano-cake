@@ -41,7 +41,7 @@ class Customers::OrdersController < ApplicationController
 				@delivery.postcode = @order.delivery_post_code
 				@delivery.street_address = @order.delivery_street_address
 				@delivery.address = @order.delivery_address
-				@delivery.custmer_id = current_customer.id
+				@delivery.customer_id = current_customer.id
 				@delivery.save
 			end
 			
@@ -80,7 +80,10 @@ class Customers::OrdersController < ApplicationController
 				@order.delivery_street_address = @delivery_street_address.street_address
 				@order.delivery_address = @delivery_street_address.address
 					
-
+			when 3
+				@order.delivery_post_code = params[:order][:new_add][:postcode]
+				@order.delivery_street_address = params[:order][:new_add][:street_address]
+				@order.delivery_address = params[:order][:new_add][:address]
 		end
 		
 	end
