@@ -41,7 +41,7 @@ class Customers::OrdersController < ApplicationController
 				@delivery.postcode = @order.delivery_post_code
 				@delivery.street_address = @order.delivery_street_address
 				@delivery.address = @order.delivery_address
-				@delivery.custmer_id = current_customer.id
+				@delivery.customer_id = current_customer.id
 				@delivery.save
 			end
 			
@@ -81,9 +81,9 @@ class Customers::OrdersController < ApplicationController
 				@order.delivery_address = @delivery_street_address.address
 					
 			when 3
-				@order.delivery_post_code = params[:order][:new_add][:delivery_post_code]
-				@order.delivery_street_address = params[:order][:new_add][:delivery_street_address]
-				@order.delivery_address = params[:order][:new_add][:delivery_address]
+				@order.delivery_post_code = params[:order][:new_add][:postcode]
+				@order.delivery_street_address = params[:order][:new_add][:street_address]
+				@order.delivery_address = params[:order][:new_add][:address]
 		end
 		
 	end
@@ -93,6 +93,6 @@ class Customers::OrdersController < ApplicationController
 	
 	private
 	def order_params
-		params.require(:order).parmit(:created_at, :delivery_street_address, :delivery_address, :delivery_post_code, :method_of_payment, :order_status, :total_fee, order_items_attributes: [:order_id, :item_id, :oreder_quantity, :order_price, :production_status])
+		params.require(:order).permit(:created_at, :delivery_street_address, :delivery_address, :delivery_post_code, :method_of_payment, :order_status, :total_fee, order_items_attributes: [:order_id, :item_id, :oreder_quantity, :order_price, :production_status])
 	end
 end
