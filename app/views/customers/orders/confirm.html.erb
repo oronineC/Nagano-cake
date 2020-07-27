@@ -1,18 +1,17 @@
-<div class="col-lg-10 offset-1 space">
-  <div class="row">
+
     <h2>注文情報確認</h2>
-  </div>
 
   <%= form_with(model: @order, local: true, url:  customers_orders_path, method: :post) do |f| %>
 
-  <div class="d-none d-lg-block space">
-    <div class="row">
-      <div class="col-lg-5"><h4>商品名</h4></div>
-      <div class="col-lg-2"><h4>単価（税込）</h4></div>
-      <div class="col-lg-2"><h4>数量</h4></div>
-      <div class="col-lg-2"><h4>小計</h4></div>
-    </div>
-  </div>
+  <table class="table","col-lg-12">
+    <thead class= "thead-light">
+      <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
 
   <% sum_all = 0 %>
   <% @carts.each do |cart| %>

@@ -68,4 +68,6 @@ gem 'mini_racer'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'enum_help'
+gem 'pry-byebug'
+
 
