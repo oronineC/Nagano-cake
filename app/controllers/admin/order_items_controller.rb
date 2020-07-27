@@ -3,17 +3,22 @@ class Admin::OrderItemsController < ApplicationController
 
     def update
     	@order_item = OrderItem.find(params[:id])
+	# if  @order_item.production_status ==  2
+	# 	#注文ステータスを制作中に変更
+	# 	@order.update_all(order_status: 2)
+	# elsif
+	# 	#制作ステータス == 制作完了
+	#     @order_item.production_status ==  3
+	# 	#注文ステータスを制作中に変更
+	# 	@order.update(order_status: 3)
+	else
 		@order_item.update(order_items_params)
-	if  #注文ステータスが入金確認になったら
-		@order.order_status ==  1
-		#制作ステータスが制作待ちになる
-		@order_items.update(production_status: 1)
+    end
 
-	end
-	   redirect_to admin_orders_path
+	   redirect_back(fallback_location: root_path)
     end
 
     def order_items_params
-		params.require(:order_items).permit(:production_status)
+		params.require(:order_item).permit(:production_status)
 	end
 end

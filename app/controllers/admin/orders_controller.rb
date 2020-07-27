@@ -11,13 +11,15 @@ class Admin::OrdersController < ApplicationController
 
     def update
     	@order = Order.find(params[:id])
+	if  #注文ステータス = 入金確認
+		@order.order_status ==  1
+		#制作ステータスが制作待ちに変更
+		@order_items.update(production_status: 1)
+	else
 		@order.update(order_params)
-		#製作側が制作中か確認
-	if  @order_item.production_status ==  2
-		注文側の制作中
-		@order.update(order_status: 2)
 	end
-	   redirect_to admin_orders_path
+	    redirect_to admin_order_path(@order)
+	   # redirect_back(fallback_location: root_path)
     end
 
      private
