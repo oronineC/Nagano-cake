@@ -7,9 +7,8 @@ class Customers::CartsController < ApplicationController
     def create
       @cart_new = Cart.new(cart_params)
       if current_customer.carts.find_by(item_id: @cart_new.item_id)
-        @cart = current_customer.carts.find_by(item_id: @cart.item_id)
-        @cart.quantity += @cart_new.quantity
-        @cart.update
+        @cart = Cart.find_by(item_id: @cart_new.item_id)
+        @cart.update(quantity:@cart.quantity+params[:cart][:quantity].to_i)
       else
         @cart_new.customer_id = current_customer.id
         @cart_new.save
