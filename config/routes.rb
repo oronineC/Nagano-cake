@@ -12,9 +12,7 @@ Rails.application.routes.draw do
      resources :orders, only:[:new,:create,:index,:show]
      get 'orders/confirm' => 'orders#confirm'
      post 'orders/confirm' => 'orders#confirm'
-     get 'orders/thanks' => 'orders#thanks'
      resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
-
 
   end
 
@@ -33,12 +31,15 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :genres
-  	resources :customers
+  	resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:create,:index,:show,:update]
+    resources :order_items, only: [:update]
     get '/top' => 'homes#top'
   end
 
   root to: 'customers/items#top'
   get 'home/about' => 'home#about'
+  get 'home/thanks' => 'home#thanks'
 
 
 end

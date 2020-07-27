@@ -16,6 +16,5 @@ class Customer < ApplicationRecord
     super && (self.is_customer_active == true)
   end
 
-  
 
 end
