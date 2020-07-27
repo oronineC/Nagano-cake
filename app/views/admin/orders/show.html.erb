@@ -19,7 +19,7 @@
           <td><%= @order.method_of_payment %></td>
           <td>
             <%= form_for(@order, url: admin_order_path(@order)) do |f| %>
-              <%= f.select :order_status, Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"), k]},:prompt => "---選択してください---", class: "col-xs-12 item_is_salse_active" %>
+              <%= f.select :order_status, Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"), k]}, class: "col-xs-12 order_status" %>
               <%= f.submit "更新",class: "btn btn-primary col-xs-12" %>
             <% end %>
           </td>
