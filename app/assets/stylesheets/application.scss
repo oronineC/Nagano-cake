@@ -49,7 +49,7 @@ li {
 .navbar-inverse {
 	padding-top: 0px;
 	background: linear-gradient(to left, #FFCCFF, #FFEEFF);
-	border-bottom: solid 10px #D0B0FF;
+	border-bottom: solid 11px #CCFF99;
 }
 
 .navbar-nav {
@@ -62,7 +62,7 @@ li {
 }
 
 body {
-	background-color: #FFFFEE;
+	background-color: #FFFFee;
 	flex: 1;
 }
 
@@ -127,13 +127,20 @@ body > .container {
 footer{
     width: 100%;
     height: 120px;
-    background: linear-gradient(to left, #FFCCFF, #FFEEFF);
-	border-top: solid 10px #D0B0FF;
+    background: linear-gradient(to right, #FFCCFF, #FFEEFF);
+	border-top: solid 10px #CCFF99;
     color: black;
     text-align: center;
     bottom: 0;
 }
 ul.footer-menu li {
 	display: inline;
+}
+
+.my-page-table {
+	background-color: #fff;
+	border: double 5px #FFEEFF;
+	text-align: center;
+	margin: 20px;
 }
 
