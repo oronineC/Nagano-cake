@@ -3,6 +3,7 @@ class Admin::OrdersController < ApplicationController
 
 	def index
 		@orders = Order.all
+		@order_items = OrderItem.all
 	end
 	def show
   	    @order = Order.find(params[:id])
@@ -11,15 +12,16 @@ class Admin::OrdersController < ApplicationController
 
     def update
     	@order = Order.find(params[:id])
-	if  #注文ステータス = 入金確認
-		@order.order_status ==  1
+    	@order_items = @order.order_items
+    	@order.update(order_params)
+    	 #注文ステータス = 入金確認
+	if  @order.order_status ==  'payment_confurnatuin'
+	    @order_items.each do |order_item|
 		#制作ステータスが制作待ちに変更
-		@order_items.update(production_status: 1)
-	else
-		@order.update(order_params)
+		order_item.update(production_status: :waiting_for_production)
+	    end
 	end
 	    redirect_to admin_order_path(@order)
-	   # redirect_back(fallback_location: root_path)
     end
 
      private
