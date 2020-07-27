@@ -20,9 +20,10 @@
       <%= f.radio_button :add, 2, style: "display: inline-block" %>登録済み住所から選択
     </label>
 
-    <%#= f.collection_select :delivery_address, @customer.delivery_street_address, :id, :delivery_street_address %>
+
 
     <%= f.collection_select :delivery_street_address, @customer.deliveries.all, :id, :street_address %>
+
 
     <p>
     <label>
