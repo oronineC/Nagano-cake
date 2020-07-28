@@ -1,3 +1,4 @@
+
 <div class="container">
     <h2>注文情報入力</h2>
 
@@ -16,6 +17,7 @@
      <p><%= current_customer.street_address %></p>
      <p><%= current_customer.lastNameKanji %><%= current_customer.first_name_kanji %></p>
 
+
     <label>
       <%= f.radio_button :add, 2, style: "display: inline-block" %>登録済み住所から選択
     </label>
@@ -33,11 +35,13 @@
      <%= f.fields_for :new_add do |na| %>
     <p>郵便番号(ハイフンなし)
       <%=na.text_field :postcode %></p>
-    <p>住所
+    <p>住所                  
       <%=na.text_field :street_address %></p>
     <p>宛名
       <%=na.text_field :address %></p>
       <% end %>
-      <%= f.submit "確認画面へ進む" %>
-  <% end %>
+
+      <div class="mx-auto" style="width: 200px;"> <%= f.submit "確認画面へ進む",  class: "btn btn-primary" %>
+      <% end %>
+      </div>
 </div>
