@@ -3,17 +3,17 @@ class Admin::OrderItemsController < ApplicationController
 
     def update
     	@order_item = OrderItem.find(params[:id])
-	# if  @order_item.production_status ==  2
-	# 	#注文ステータスを制作中に変更
-	# 	@order.update_all(order_status: 2)
-	# elsif
-	# 	#制作ステータス == 制作完了
-	#     @order_item.production_status ==  3
-	# 	#注文ステータスを制作中に変更
-	# 	@order.update(order_status: 3)
-	else
-		@order_item.update(order_items_params)
-    end
+    	@order = @order_item.order
+    	@order_item.update(order_items_params)
+		if  @order_item.production_status == 'in_production'
+	 	#注文ステータスを制作中に変更
+	 		@order.update(order_status: :in_production)
+	 	#制作ステータス == 制作完了
+	    elsif
+	    	@order.order_items.count == @order.order_items.where(production_status: 'productio_completd').count
+	 	#注文ステータスを制作中に変更
+	 		@order.update(order_status: :preparing_to_ship)
+    	end
 
 	   redirect_back(fallback_location: root_path)
     end
