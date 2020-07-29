@@ -25,6 +25,10 @@ clearfix::after {
 	clear: both;
 }
 
+.h1 .h2 .h3 .h4 .h5 .h6 .p .li .td .th {
+	font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
 h2 {
   color: #6699FF;
   text-align: center;
@@ -46,6 +50,7 @@ li {
 	margin-right: 10px;
 }
 
+
 .navbar-inverse {
 	padding-top: 0px;
 	background: linear-gradient(to left, #FFCCFF, #FFEEFF);
@@ -59,6 +64,9 @@ li {
 #nav-message {
 	margin-right: 50px;
 	line-height: 30px;
+	color: #777777;
+	background-color: #fff;
+	border-radius: 20px;
 }
 
 body {
@@ -119,22 +127,22 @@ body > .container {
 	margin-bottom: 50px;
 }
 
+.go-login {
+	margin-top: 30px;
+	text-align: center;
+	border: double 5px #CCCCCC;
+	border-radius: 10px;
+}
+
 .item-box {
+	width: 160px;
+	margin-top: 20px;
 	margin-right: 20px;
 	float: left;
 }
 
-footer{
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to right, #FFCCFF, #FFEEFF);
-	border-top: solid 10px #CCFF99;
-    color: black;
-    text-align: center;
-    bottom: 0;
-}
-ul.footer-menu li {
-	display: inline;
+.image-box{
+	border: solid 5px #CCFFFF;
 }
 
 .my-page-table {
@@ -143,4 +151,95 @@ ul.footer-menu li {
 	text-align: center;
 	margin: 20px;
 }
+
+.delivery-button {
+	margin: 20px;
+}
+
+.cart-table {
+	margin: 20px 10px;
+}
+
+.cart-maney-all {
+	background-color: #fff;
+	text-align: center;
+	border: double 3px #000
+}
+
+.order-payment-method {
+	margin-bottom: 30px;
+}
+
+.order-delivery-point {
+	margin: 30px 0px;
+}
+
+.order-delivery-contents {
+	padding-left: 40px;
+	margin-top: 20px;
+}
+
+.go-next {
+	margin: 0px 495px;
+}
+
+.confirm-table-1 {
+	width: 800px;
+}
+
+.confirm-table-2 {
+	width: 250px;
+	margin: 0px 0px 0px 50px;
+}
+
+.confirm-table-3 {
+	width: 500px;
+}
+
+.confirm-button {
+	margin: 0px 495px;
+}
+
+.thanks-image {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 600px;
+  	height: 380px;
+	background-image: url(thanks.jpg);
+  	background-size: cover;
+  	background-position: center;
+  	border-radius: 150px;
+  	box-shadow: inset 0 0 20px 20px #FFFFee;
+}
+
+footer{
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to right, #FFCCFF, #FFEEFF);
+	border-top: solid 10px #CCFF99;
+    color: black;
+    text-align: center;
+    bottom: 0;
+}
+
+.share {
+	color: #777777;
+	margin-top: 15px;
+	font-family: fantasy;
+}
+
+ul.footer-menu li {
+	display: inline;
+}
+
+ul.footer-menu li i {
+	font-size: 30px;
+	color: #777777;
+	margin-top: 10px;
+	margin-right: 10px
+}
+
+
+
+
 
