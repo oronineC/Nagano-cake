@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
 	before_action :authenticate_admin!
    def index
-    @customers = Customer.page(params[:page]).per(5)
+     @search = Customer.ransack(params[:q])
+     @customers = @search.result.page(params[:page])
   end
 
   def show
