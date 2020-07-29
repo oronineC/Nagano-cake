@@ -13,25 +13,25 @@
 
 <div class="col-8">
 	<div class="row">
-	    <p>商品名</p>　　
+	    <p>商品名：</p>
 		<p><%= @item.name %></p>
 	</div>
 	<div class="row">
-		<p>商品説明</p>　　
+		<p>商品説明</p>
 		<p><%= @item.explanation%></p>
     </div>
     <div class="row">
 		<p>税込価格</p>
-		<p>(税抜価格)</p>　　
+		<p>(税抜価格)：</p>
 		<p><%= (@item.price* 1.10).round(0)%></p>
 		<p>(<%= @item.price%>)円</p>
     </div>
     <div class="row">
-		<p>ジャンル</p>　　
+		<p>ジャンル：</p>
 		<p><%= @item.genre.name%></p>
     </div>
     <div class="row">
-		<p>ステータス</p>　　
+		<p>ステータス：</p>
 		<p><%= @item.is_sales_active_i18n %></p>
     </div>
 </div>

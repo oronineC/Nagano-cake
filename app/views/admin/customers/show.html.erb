@@ -2,7 +2,7 @@
 <table class='table table-type'>
       <tr>
         <th>顧客ID</th>
-        <td><%= @customer.id %>  
+        <td><%= @customer.id %>
             <span class="badge badge-primary">
             <% if @customer.is_customer_active == true %>
               有効会員
@@ -41,5 +41,5 @@
   <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-primary" %>
 
 <div class="col-6">
-  <%= link_to "注文履歴一覧を見る", "#", class: "btn btn-primary" %>
+  <%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %>
 </div>
