@@ -5,8 +5,7 @@ class Admin::OrderItemsController < ApplicationController
     	@order_item = OrderItem.find(params[:id])
     	@order = @order_item.order
     	@order_item.update(order_items_params)
-
-		if  @order_item.production_status ==  "in_production"
+　　　　　if  @order_item.production_status ==  "in_production"
 			@order.update(order_status: :in_production)
 			#制作ステータス == 制作完了
 		elsif

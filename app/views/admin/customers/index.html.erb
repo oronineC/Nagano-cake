@@ -1,5 +1,8 @@
 <h2>会員一覧</h2>
-<i class="glyphicon glyphicon-plus-sign"></i>
+<%= search_form_for(@search, url: admin_customers_path) do |f| %>
+  <%= f.search_field :lastNameKanji_or_first_name_kanji_cont %>
+  <%= f.submit %>
+<% end %>
     <!--items一覧 -->
     <table class="table">
       <thead class="thead-light">
@@ -16,9 +19,9 @@
         <tr>
           <td><%= customer.id %></td>
           <td><%= link_to admin_customer_path(customer) do %>
-            <%= customer.lastNameKanji%>
-            <%= customer.first_name_kanji %>
-            <% end %>
+            　　　<%= customer.lastNameKanji%>
+            　　　<%= customer.first_name_kanji %>
+            　　<% end %>
           </td>
           <th><%= customer.email %></th>
           <td>
