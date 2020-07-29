@@ -9,10 +9,7 @@ class Admin::OrderItemsController < ApplicationController
 		@order.update(order_status: :in_production)
 		#制作ステータス == 制作完了
 	elsif@order.order_items.count ==  @order.order_items.where(production_status: :productio_completd).count
-
-
-
-		#注文ステータスを制作中に変更
+　　　　　#注文ステータスを制作中に変更
 		@order.update(order_status: :preparing_to_ship)
 	end
 	    redirect_to admin_order_path(@order)

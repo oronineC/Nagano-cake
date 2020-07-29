@@ -1,9 +1,8 @@
 class Admin::ItemsController < ApplicationController
 	before_action :authenticate_admin!
   def index
-   # @items = Item.page(params[:page]).per(5)
-   @search = Item.ransack(params[:q])
-   @items = @search.result.page(params[:page])
+   　@search = Item.ransack(params[:q])
+   　@items = @search.result.page(params[:page])
   end
 
   def show
