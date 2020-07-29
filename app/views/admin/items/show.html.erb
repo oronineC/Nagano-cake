@@ -1,0 +1,46 @@
+<div class="container">
+<div class="row">
+	<div class="col-12">
+	  <h2>商品詳細</h2>
+	  <%= search_form_for(@search, url: admin_items_path) do |f| %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+	</div>
+</div>
+<div class="row">
+<div class="col-4">
+  	<div class="item-image">
+    	<%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "no_image.jpg", size:'300x200' %>
+  	</div>
+</div>
+
+<div class="col-8">
+	<div class="row">
+	    <p>商品名：</p>
+		<p><%= @item.name %></p>
+	</div>
+	<div class="row">
+		<p>商品説明</p>
+		<p><%= @item.explanation%></p>
+    </div>
+    <div class="row">
+		<p>税込価格</p>
+		<p>(税抜価格)：</p>
+		<p><%= (@item.price* 1.10).round(0)%></p>
+		<p>(<%= @item.price%>)円</p>
+    </div>
+    <div class="row">
+		<p>ジャンル：</p>
+		<p><%= @item.genre.name%></p>
+    </div>
+    <div class="row">
+		<p>ステータス：</p>
+		<p><%= @item.is_sales_active_i18n %></p>
+    </div>
+</div>
+	<p><%= link_to "編集する", edit_admin_item_path(@item), class: "btn-sm btn-success edit_item_#{@item.id}" %></p>
+	<p><%= link_to "削除する", admin_item_path(@item), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_item_#{@item.id}" %>
+	</p>
+</div>
+</div>

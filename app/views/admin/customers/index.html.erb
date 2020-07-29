@@ -1,0 +1,43 @@
+<div class="col-3">
+  <h2>会員一覧</h2>
+</div>
+<div class="col-3">
+  <%= search_form_for(@search, url: admin_customers_path) do |f| %>
+    <%= f.search_field :lastNameKanji_or_first_name_kanji_cont, placeholder: "例）〇〇〇〇" %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+    <!--items一覧 -->
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+           <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to admin_customer_path(customer) do %>
+            　　　<%= customer.lastNameKanji%>
+            　　　<%= customer.first_name_kanji %>
+            　　<% end %>
+          </td>
+          <th><%= customer.email %></th>
+          <td>
+            <% if customer.is_customer_active == true %>
+              有効
+            <% else %>
+              退会済
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+<%= paginate @customers %>

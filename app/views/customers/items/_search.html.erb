@@ -1,0 +1,6 @@
+ <div class="genre-search", style="border: solid 7px #FFBEDA; background-color: #FFEEFF; border-radius: 40px; padding: 10px;">
+  	<h3 class="genre-title text-center"><strong>ジャンル検策</strong></h3>
+ 	<% genres.each do |genre| %>
+    	<%= button_to genre.name, {controller: 'items', action: 'index'}, {method: :get, class: "btn btn-link", params: {genre_id: genre.id}} %>
+  	<% end %>
+</div>

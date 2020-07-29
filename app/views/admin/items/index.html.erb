@@ -1,0 +1,37 @@
+<h2 class="col-3">商品一覧</h2>
+<div class="col-3">
+  <%= search_form_for(@search, url: admin_items_path) do |f| %>
+    <%= f.search_field :name_cont, placeholder: "例）〇〇〇〇" %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<div class="col-6">
+  <%= link_to new_admin_item_path, :method => :get do %>
+    <i class="fas fa-plus-circle" style="font-size: 40px; float: right; color: #777777"></i>
+  <% end %>
+</div>
+    <!--items一覧 -->
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item) %></td>
+          <td><%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.is_sales_active_i18n %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+<%= paginate @items %>

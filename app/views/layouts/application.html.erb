@@ -7,9 +7,81 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/13c8637a3c.js" crossorigin="anonymous"></script>
   </head>
 
+  <header class="navbar clearfix navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav">
+          <%= link_to image_tag('/assets/logo.jpg', width:"90px", height:"90px"), root_path %>
+        </ul>
+      </nav>
+      <nav>
+        <ul class="nav justify-content-end">
+            <!-- 顧客ログイン時 -->
+          <% if customer_signed_in? %>
+            <li id="nav-message">　ようこそ、<%= current_customer.lastNameKanji %>さん！　</li>
+            <li><%= link_to ' マイページ', customers_customer_path(current_customer.id), class: 'btn btn-outline-info fas fa-address-book' %></li>
+            <li><%= link_to ' 商品一覧', customers_items_path, class: 'btn btn-outline-info fas fa-store' %></li>
+            <li><%= link_to ' カート', customers_carts_path,  class: 'btn btn-outline-info fas fa-shopping-cart' %></li>
+            <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-outline-info fas fa-sign-out-alt' %></li>
+          <!-- 管理者ログイン時 -->
+          <% elsif admin_signed_in? %>
+            <li id="nav-message">　お帰りなさい、管理者様　</li>
+            <li><%= link_to ' 商品一覧', admin_items_path, class: 'btn btn-outline-info fas fa-store' %></li>
+            <li><%= link_to ' 会員一覧', admin_customers_path, class: 'btn btn-outline-info fas fa-list-ul' %></li>
+            <li><%= link_to ' 注文履歴一覧', admin_orders_path, class: 'btn btn-outline-info fas fa-clipboard-list' %></li>
+            <li><%= link_to ' ジャンル一覧', admin_genres_path, class: 'btn btn-outline-info fas fa-birthday-cake' %></li>
+            <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-outline-info fas fa-sign-out-alt' %></li>
+            <!-- ログアウト時またはログインしていない時 -->
+          <% else %>
+            <li><%= link_to ' about', home_about_path, class: 'btn btn-outline-info fas fa-info-circle' %></li>
+            <li><%= link_to ' 商品一覧', customers_items_path, class: 'btn btn-outline-info fas fa-store' %></li>
+            <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'btn btn-outline-info fas fa-registered' %></li>
+            <li><%= link_to ' ログイン', new_customer_session_path, class: 'btn btn-outline-info fas fa-sign-in-alt' %></li>
+            <li><%= link_to ' 管理者の方はこちら', new_admin_session_path, class: 'btn btn-outline-info fas fa-user-lock' %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
+
+
+  <footer>
+    <h5 class="share"><i class="fas fa-angle-double-down"></i>　SHARE SNS　<i class="fas fa-angle-double-down"></i>　</h5>
+    <ul class="footer-menu">
+      <li>
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/naganocake20200730/?hl=ja">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+    <ul class="footer-menu">
+      <li><%= link_to 'home ', root_path %>　｜</li>
+      <li><%= link_to 'about ', home_about_path %>　｜</li>
+      <li><%= link_to 'service ', home_thanks_path %>　｜</li>
+      <li><%= link_to 'Contact Us ', "#" %></li>
+    </ul>
+    <p>© All rights reserved by OronainC.</p>
+  </footer>
+
 </html>

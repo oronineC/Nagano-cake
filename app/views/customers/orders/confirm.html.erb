@@ -1,0 +1,101 @@
+<div class="col-12">
+  <h2>注文情報確認</h2>
+</div>
+
+<div class="confirm-table-1">
+  <table class="table table-bordered">
+    <thead class="thead thead-light">
+      <tr>
+        <th></th>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% sum_all = 0 %>
+      <% @carts.each do |cart| %>
+        <tr>
+          <td>
+            <%= link_to customers_item_path(cart.item_id) do %>
+              <%= attachment_image_tag(cart.item, :image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50') %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to customers_item_path(cart.item_id) do %>
+              <%= cart.item.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= price_include_tax(cart.item.price) %>
+          </td>
+          <td>
+            <%= cart.quantity %>
+          </td>
+          <td>
+            <%= sum_item = price_include_tax(cart.item.price).to_i * cart.quantity %>円
+            <% sum_all += sum_item %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="confirm-table-2">
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-info">送料</th>
+      <td><%= @order.postage %>円</td>
+    </tr>
+    <tr>
+      <th class="table-info">商品合計</th>
+      <td><%= sum_all.to_i %>円</td>
+    </tr>
+    <tr>
+      <th class="table-info">ご請求額</th>
+      <td>
+        <% billling_amount = sum_all + @order.postage.to_i %>
+        <%= billling_amount.to_i %>円
+      </td>
+    </tr>
+</table>
+</div>
+
+
+<div class="confirm-table-3">
+  <table class="table table-borderless">
+    <tr>
+      <th>
+        <h5><i class="far fa-credit-card"></i>　支払方法</h5>
+      </th>
+      <td><%= @order.method_of_payment %></td>
+    </tr>
+    <tr>
+      <th>
+        <h5><i class="fas fa-truck"></i>　お届け先</h5>
+      </th>
+      <td>
+        <p><%= @order.delivery_post_code %>　<%= @order.delivery_address %></p>
+        <p><%= @order.delivery_street_address %></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<div class="col-12">
+  <%= form_with(model: @order, local: true, url:  customers_orders_path, method: :post) do |f| %>
+    <%= f.hidden_field :method_of_payment ,:value => @order.method_of_payment %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.hidden_field :delivery_post_code, :value => "#{@order.delivery_post_code}" %>
+    <%= f.hidden_field :delivery_address, :value => "#{@order.delivery_address}" %>
+    <%= f.hidden_field :delivery_street_address, :value => "#{@order.delivery_street_address}" %>
+    <div class="confirm-button">
+      <%= f.submit "購入を確定する", class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,37 @@
+<div class="col-3">
+  <h2>注文履歴詳細</h2>
+</div>
+<div class="col-3">
+  <%= search_form_for(@search, url: admin_orders_path) do |f| %>
+    <%= f.search_field :customer_lastNameKanji_cont, placeholder: "例）〇〇〇〇" %>
+    <%= f.submit %>
+  <% end %>
+</div>
+    <!--orders一覧 -->
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>購入日時</th>
+          <th>購入</th>
+          <th>注文個数</th>
+           <th>注文ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order)%></td>
+          <td><%= order.customer.lastNameKanji %><%= order.customer.first_name_kanji %></td>
+          <td>
+            <% sum_all = 0 %>
+            <% order.order_items.each do |order_item| %>
+              <% sum_all += order_item.order_quantity %>
+            <% end %>
+            <%= sum_all %>
+          </td>
+          <td><%= order.order_status_i18n %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>

@@ -1,0 +1,35 @@
+<div class="col-12">
+  <h2>管理者ログイン画面</h2>
+</div>
+
+<div class="d-flex justify-content-center align-items-center container ">
+  <div class="row">
+    <div class="col-12"></div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th><%= f.label "メールアドレス"%></th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "パスワード" %></th>
+        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+      </tr>
+    </table>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group control">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions row">
+      <%= f.submit "ログイン" , class: "btn btn-primary col-md-12" %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+
+
