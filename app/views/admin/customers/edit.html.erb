@@ -1,8 +1,9 @@
-<div class="container mt-5">
+<div class="col-12">
     <h4><%= @customer.lastNameKanji %>　<%= @customer.first_name_kanji %>さん登録情報編集</h4>
+</div>
 
-    <%= form_for(@customer,url: admin_customer_path(@customer.id)) do |f| %>
-    <table >
+<%= form_for(@customer,url: admin_customer_path(@customer.id)) do |f| %>
+    <table class="table">
         <tr>
             <td class="text-center">会員ID</td>
         　　<td><%= @customer.id %></td>

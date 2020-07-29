@@ -1,9 +1,15 @@
-<h2>商品一覧</h2>
-<%= search_form_for(@search, url: admin_items_path) do |f| %>
-  <%= f.search_field :name_cont %>
-  <%= f.submit %>
-<% end %>
-<%= link_to "+", new_admin_item_path %>
+<h2 class="col-3">商品一覧</h2>
+<div class="col-3">
+  <%= search_form_for(@search, url: admin_items_path) do |f| %>
+    <%= f.search_field :name_cont, placeholder: "例）〇〇〇〇" %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<div class="col-6">
+  <%= link_to new_admin_item_path, :method => :get do %>
+    <i class="fas fa-plus-circle" style="font-size: 40px; float: right; color: #777777"></i>
+  <% end %>
+</div>
     <!--items一覧 -->
     <table class="table">
       <thead class="thead-light">
