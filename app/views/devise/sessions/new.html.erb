@@ -1,30 +1,50 @@
 <div class="col-12">
   <h2>登録済みの方はこちら</h2>
 </div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-group form-group-lg">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
 
-   <div class="form-group form-group-lg">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+<div class="d-flex justify-content-center align-items-center container ">
+  <div class="row">
+    <div class="col-12"></div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th><%= f.label "メールアドレス"%></th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "パスワード" %></th>
+        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+      </tr>
+    </table>
 
-  <% if devise_mapping.rememberable? %>
-   <div class="form-group form-group-lg">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group control">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions row">
+      <%= f.submit "ログイン" , class: "btn btn-primary col-md-12" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-primary" %>
   </div>
-<% end %>
+</div>
 
-<div class="col-12">
-  <%= render "devise/shared/links" %>
+
+
+<div class="d-flex justify-content-center align-items-center container ">
+  <div class="col-md-5 go-login">
+    <h3>登録がお済みではない方</h3>
+    <h5>
+      <%= link_to "こちら", "/customers/sign_up" %>から新規登録を行ってください。
+    </h5>
+  </div>
+</div>
+
+<div class="col-3 offset-9">
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "パスワードをお忘れの方はこちら", new_password_path(resource_name) %><br />
+<% end %>
 </div>
 
