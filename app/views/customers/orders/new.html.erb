@@ -1,47 +1,59 @@
-
-<div class="container">
-    <h2>注文情報入力</h2>
-
-    <%= form_with(model: @order, local: true, url: customers_orders_confirm_path, method: :post) do |f| %>
-		<h4>支払方法</h4>
-		<%= f.radio_button :method_of_payment, 0, checked: "checked" %>
-		<%= f.label :metod_of_payment, "クレジットカード" %>
-		<%= f.radio_button :method_of_payment, 1 %>
-	  <%= f.label :metod_of_payment, "銀行振込" %>
-
-    <h4>届け先</h4>
-    <label>
-      <%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所
-    </label>
-    <p><%= current_customer.postcode %></p>
-     <p><%= current_customer.street_address %></p>
-     <p><%= current_customer.lastNameKanji %><%= current_customer.first_name_kanji %></p>
-
-
-    <label>
-      <%= f.radio_button :add, 2, style: "display: inline-block" %>登録済み住所から選択
-    </label>
-
-
-
-    <%= f.collection_select :delivery_street_address, @customer.deliveries.all, :id, :street_address %>
-
-
-    <p>
-    <label>
-        <%=f.radio_button :add, 3 %>新しいお届け先
-    </label>
-    </p>
-     <%= f.fields_for :new_add do |na| %>
-    <p>郵便番号(ハイフンなし)
-      <%=na.text_field :postcode %></p>
-    <p>住所                  
-      <%=na.text_field :street_address %></p>
-    <p>宛名
-      <%=na.text_field :address %></p>
-      <% end %>
-
-      <div class="mx-auto" style="width: 200px;"> <%= f.submit "確認画面へ進む",  class: "btn btn-primary" %>
-      <% end %>
-      </div>
+<div class="col-12">
+  <h2><i class="fas fa-asterisk"></i>　注文情報入力　<i class="fas fa-asterisk"></i></h2>
 </div>
+
+<%= form_with(model: @order, local: true, url: customers_orders_confirm_path, method: :post) do |f| %>
+  <div class="order-payment-method">
+    <h4><i class="far fa-credit-card"></i>　お支払い方法</h4>
+    <%= f.radio_button :method_of_payment, 0, checked: "checked" %>
+    <%= f.label :metod_of_payment, "クレジットカード" %>
+    <%= f.radio_button :method_of_payment, 1 %>
+    <%= f.label :metod_of_payment, "銀行振込" %>
+  </div>
+
+  <div class="order-delivery-select">
+    <h4><i class="fas fa-truck"></i>　お届け先</h4>
+    <div class="order-delivery-point">
+      <h5><%= f.radio_button :add, 1, checked: true, checked: "checked" %>　ご自身の住所</h5>
+      <div class="order-delivery-contents">
+        <p>📮：<%= current_customer.postcode %> <%= current_customer.street_address %></p>
+        <p>宛名：<%= current_customer.lastNameKanji %><%= current_customer.first_name_kanji %></p>
+      </div>
+    </div>
+
+    <div class="order-delivery-point">
+      <h5><%= f.radio_button :add, 2, style: "display: inline-block" %>　登録済み住所から選択</h5>
+      <div class="order-delivery-contents">
+        <%= f.collection_select :delivery_street_address, @customer.deliveries.all, :id, :street_address %>
+      </div>
+    </div>
+
+    <div class="order-delivery-point">
+      <h5><%=f.radio_button :add, 3 %>　新しいお届け先</h5>
+      <%= f.fields_for :new_add do |na| %>
+        <div class="order-delivery-contents">
+          <table class="table table-borderless">
+            <tr>
+              <th>郵便番号(ハイフンなし)</th>
+              <td><%=na.text_field :postcode, placeholder: "例）0000000" %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%=na.text_field :street_address, placeholder: "例）〇〇県〇〇市〇〇０−０−０", :size => "60" %></td>
+            </tr>
+            <tr>
+              <th>宛名</th>
+              <td><%=na.text_field :address, placeholder: "例）〇〇〇〇" %></td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="go-next">
+    <%= f.submit "確認画面へ進む",  class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
